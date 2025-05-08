@@ -1,0 +1,946 @@
+import { Link } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
+
+// Hero Section with Animated Carousel
+const Hero = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slideInterval = useRef<NodeJS.Timeout | null>(null);
+
+  const slides = [
+    {
+      title: "Yeni Nesil Yazarkasa POS Sistemleri",
+      description: "PayEra ile işletmenizi dijital dönüşümün merkezine taşıyın. Güvenli, hızlı ve kullanımı kolay yazarkasa POS çözümleri.",
+      image: "/images/payera-pos-device.png",
+      fallbackImage: "https://via.placeholder.com/500x400/FFFFFF/0088A9?text=PayEra+POS"
+    },
+    {
+      title: "Akıllı Ödeme Çözümleri",
+      description: "Tüm ödeme yöntemlerini tek bir cihazda toplayarak işletmenize müşteri memnuniyeti ve operasyonel verimlilik sağlayın.",
+      image: "/images/pos-payment.png",
+      fallbackImage: "https://via.placeholder.com/500x400/FFFFFF/0088A9?text=Akıllı+Ödeme"
+    },
+    {
+      title: "Entegre İş Çözümleri",
+      description: "Stok takibi, müşteri yönetimi ve muhasebe entegrasyonları ile tüm işletme ihtiyaçlarınızı PayEra ile karşılayın.",
+      image: "/images/business-solution.png",
+      fallbackImage: "https://via.placeholder.com/500x400/FFFFFF/0088A9?text=Entegre+Çözümler"
+    }
+  ];
+
+  const startSlideShow = () => {
+    slideInterval.current = setInterval(() => {
+      setCurrentSlide(prev => (prev + 1) % slides.length);
+    }, 5000);
+  };
+
+  useEffect(() => {
+    startSlideShow();
+    return () => {
+      if (slideInterval.current) {
+        clearInterval(slideInterval.current);
+      }
+    };
+  }, []);
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+    // Reset the interval when manually changing slide
+    if (slideInterval.current) {
+      clearInterval(slideInterval.current);
+    }
+    startSlideShow();
+  };
+
+  return (
+    <section className="bg-navy text-white py-20 md:py-28 mt-16 overflow-hidden relative">
+      <div className="max-w-screen-xl mx-auto px-4">
+        <div className="flex flex-col md:flex-row items-center">
+          <div className="md:w-1/2 mb-10 md:mb-0 z-10">
+            {slides.map((slide, index) => (
+              <div 
+                key={index} 
+                className={`transition-opacity duration-700 absolute md:relative ${
+                  currentSlide === index ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                }`}
+              >
+                <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                  {slide.title}
+                </h1>
+                <p className="text-xl mb-8 text-gray-300">
+                  {slide.description}
+                </p>
+              </div>
+            ))}
+            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 z-10">
+              <Link to="/urunler" className="bg-turquoise hover:bg-opacity-80 text-white font-bold py-3 px-6 rounded-lg transition duration-300 text-center">
+                Ürünleri İncele
+              </Link>
+              <Link to="/iletisim" className="bg-transparent hover:bg-white hover:bg-opacity-10 text-white font-bold py-3 px-6 border border-white rounded-lg transition duration-300 text-center">
+                Bize Ulaşın
+              </Link>
+            </div>
+          </div>
+          <div className="md:w-1/2 relative md:pl-10 z-10">
+            <div className="bg-white shadow-2xl rounded-lg p-6 transform transition-transform duration-700 hover:scale-105">
+              <div className="rounded-lg bg-gray-100 overflow-hidden">
+                {slides.map((slide, index) => (
+                  <div 
+                    key={index} 
+                    className={`transition-opacity duration-700 ${
+                      currentSlide === index ? 'opacity-100' : 'opacity-0 absolute top-0 left-0 pointer-events-none'
+                    }`}
+                  >
+                    <img 
+                      src={slide.image} 
+                      alt="PayEra Ürün" 
+                      className="w-full object-cover transform hover:scale-105 transition-transform duration-500"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = slide.fallbackImage;
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="flex justify-center mt-8">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`h-3 w-3 mx-2 rounded-full transition-colors duration-300 ${
+                currentSlide === index ? 'bg-turquoise' : 'bg-gray-400'
+              }`}
+              aria-label={`Slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+      {/* Background design elements */}
+      <div className="absolute top-0 right-0 w-1/3 h-full opacity-10">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#00B4D8" d="M42.8,-65C55.9,-56.5,67.2,-44.8,73.7,-30.5C80.3,-16.2,82.2,0.7,77.1,14.8C72,28.9,60,40.3,46.8,47.8C33.7,55.3,19.3,58.9,5.3,59.8C-8.8,60.8,-22.5,59.1,-34.4,52.6C-46.3,46.1,-56.5,34.8,-63.1,20.9C-69.7,7,-72.8,-9.5,-68.7,-23.7C-64.6,-37.9,-53.2,-49.7,-40.1,-58.2C-27,-66.7,-13.5,-71.9,0.6,-72.9C14.7,-73.9,29.7,-73.4,42.8,-65Z" transform="translate(100 100)" />
+        </svg>
+      </div>
+      <div className="absolute bottom-0 left-0 w-1/3 h-full opacity-10">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#00B4D8" d="M37.9,-49.2C51.1,-45,65.3,-37.7,72.5,-25.8C79.7,-13.9,79.9,2.7,74.4,16.5C68.9,30.3,57.8,41.2,45.4,47.4C33,53.6,19.3,55,5.9,57.7C-7.5,60.3,-20.7,64.3,-33.9,62.1C-47.1,60,-60.3,51.7,-65.9,39.7C-71.4,27.7,-69.4,11.9,-65.7,-1.9C-62,-15.7,-56.6,-27.4,-48.2,-33.9C-39.7,-40.5,-28.3,-41.9,-17.9,-46.9C-7.5,-51.9,2.9,-60.6,13.2,-62.5C23.5,-64.4,33.7,-59.5,37.9,-49.2Z" transform="translate(100 100)" />
+        </svg>
+      </div>
+    </section>
+  );
+};
+
+// Features Section
+const FeaturesSection = () => {
+  const features = [
+    {
+      title: "Kolay Kullanım",
+      description: "Sezgisel arayüz tasarımı ve kullanıcı dostu menüler ile personel eğitim süreci minimuma iner.",
+      icon: (
+        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        </svg>
+      )
+    },
+    {
+      title: "Gelişmiş Raporlama",
+      description: "Günlük, haftalık ve aylık detaylı satış raporları, stok takibi ve personel performans analizleri.",
+      icon: (
+        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      )
+    },
+    {
+      title: "Entegrasyon",
+      description: "E-fatura, e-arşiv, muhasebe yazılımları, e-ticaret platformları ve diğer iş uygulamalarıyla uyumlu.",
+      icon: (
+        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+        </svg>
+      )
+    },
+    {
+      title: "Mobil Erişim",
+      description: "İşletmenizin verilerine istediğiniz yerden, istediğiniz zaman mobil uygulama üzerinden güvenle erişin.",
+      icon: (
+        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        </svg>
+      )
+    },
+    {
+      title: "Çoklu Ödeme",
+      description: "Nakit, kredi kartı, QR kod, temassız ödemeler ve sanal POS çözümleri ile tüm ödeme yöntemlerini destekler.",
+      icon: (
+        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+        </svg>
+      )
+    },
+    {
+      title: "7/24 Destek",
+      description: "Teknik destek ekibimiz, işletmenizin kesintisiz çalışması için her zaman yanınızda ve hizmetinizdedir.",
+      icon: (
+        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+      )
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-white">
+      <div className="max-w-screen-xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">Özelliklerimiz</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            PayEra POS sistemleri ile işletmenizi bir adım öne taşıyın
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <div 
+              key={index} 
+              className="p-6 rounded-xl text-center group bg-white shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300 hover:border-turquoise hover:-translate-y-1"
+            >
+              <div className="inline-block p-4 rounded-full bg-turquoise text-white mb-6 group-hover:bg-navy transition-colors duration-300">
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-bold text-navy mb-3">{feature.title}</h3>
+              <p className="text-gray-600">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Products Section
+const ProductsSection = () => {
+  const products = [
+    {
+      id: "payera-a90",
+      name: "PayEra A90",
+      description: "Android tabanlı, dokunmatik ekranlı, kompakt tasarımlı işletmeniz için ideal yazarkasa POS çözümü.",
+      image: "/images/payera-a90.png",
+      fallbackImage: "https://via.placeholder.com/300x400/FFFFFF/4fd1c5?text=PayEra+A90",
+      features: ["Android İşletim Sistemi", "5.5\" Dokunmatik Ekran", "4G & Wi-Fi Bağlantı", "Hızlı Termal Yazıcı"]
+    },
+    {
+      id: "payera-507",
+      name: "PayEra 507",
+      description: "Yeni teknoloji ile geliştirilmiş, entegre yazılımlı, yüksek performanslı yeni nesil yazarkasa POS sistemi.",
+      image: "/images/payera-507.png",
+      fallbackImage: "https://via.placeholder.com/300x400/FFFFFF/4fd1c5?text=PayEra+507",
+      features: ["Özel İşletim Sistemi", "7\" Renkli Ekran", "NFC & Temassız Ödeme", "Uzun Ömürlü Batarya"]
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-light-gray">
+      <div className="max-w-screen-xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">Yenilikçi Ürünlerimiz</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            İşletmenizin ihtiyaçlarına uygun modern ve güvenilir POS çözümleri
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {products.map((product) => (
+            <div key={product.id} className="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl group">
+              <div className="flex flex-col md:flex-row">
+                <div className="md:w-2/5 bg-gray-100 p-6 flex items-center justify-center">
+                  <img 
+                    src={product.image} 
+                    alt={product.name} 
+                    className="h-64 object-contain transition-transform duration-500 group-hover:scale-110"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = product.fallbackImage;
+                    }}
+                  />
+                </div>
+                <div className="md:w-3/5 p-6">
+                  <h3 className="text-2xl font-bold text-navy mb-3">{product.name}</h3>
+                  <p className="text-gray-700 mb-4">{product.description}</p>
+                  
+                  <div className="mb-6">
+                    <h4 className="text-sm font-semibold text-gray-500 mb-2">ÖNE ÇIKAN ÖZELLİKLER</h4>
+                    <ul className="space-y-2">
+                      {product.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-center text-gray-700">
+                          <svg className="w-4 h-4 text-turquoise mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <Link 
+                    to={`/urunler/${product.id}`} 
+                    className="inline-flex items-center text-navy font-medium border-b-2 border-turquoise pb-1 transition-colors duration-300 hover:text-turquoise"
+                  >
+                    Detaylı İncele
+                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Why Choose Us Section
+const WhyChooseUsSection = () => {
+  const advantages = [
+    {
+      title: "Hızlı İşlem",
+      description: "Güçlü donanımı sayesinde ödeme işlemlerini saniyeler içinde tamamlar, müşteri bekletme süresini minimize eder.",
+      icon: (
+        <svg className="w-12 h-12 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      )
+    },
+    {
+      title: "Güvenli Ödeme",
+      description: "En güncel güvenlik standartlarıyla müşterilerinizin kart bilgilerini korur, işletmenize güven sağlar.",
+      icon: (
+        <svg className="w-12 h-12 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+      )
+    },
+    {
+      title: "Gelişmiş Analitik",
+      description: "Detaylı satış raporları ve analiz araçlarıyla işletmenizin performansını anlık olarak takip edin ve stratejik kararlar alın.",
+      icon: (
+        <svg className="w-12 h-12 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      )
+    },
+    {
+      title: "Uzman Destek",
+      description: "Teknik sorunlarınızda uzman ekibimiz 7/24 yanınızda, işletmenizin kesintisiz çalışmasını sağlar.",
+      icon: (
+        <svg className="w-12 h-12 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+      )
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-white relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute -top-20 -right-20 w-64 h-64 bg-light-gray rounded-full opacity-50"></div>
+      <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-light-gray rounded-full opacity-30"></div>
+      
+      <div className="max-w-screen-xl mx-auto px-4 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">Neden PayEra?</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            İşletmelerin dijital dönüşüm yolculuğunda güvenilir ortağınız
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {advantages.map((item, index) => (
+            <div 
+              key={index} 
+              className="bg-white p-6 rounded-lg flex items-start space-x-4 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100"
+            >
+              <div className="p-3 rounded-full bg-light-gray">
+                {item.icon}
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-navy mb-2">{item.title}</h3>
+                <p className="text-gray-700">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Statistics Section
+const StatisticsSection = () => {
+  const stats = [
+    { value: "10,000+", label: "Aktif Cihaz", icon: "💻" },
+    { value: "5,000+", label: "Mutlu Müşteri", icon: "😊" },
+    { value: "100+", label: "Bayi Ağı", icon: "🏢" },
+    { value: "7/24", label: "Teknik Destek", icon: "🛠️" }
+  ];
+
+  return (
+    <section className="py-20 bg-navy text-white">
+      <div className="max-w-screen-xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Rakamlarla PayEra</h2>
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            Türkiye genelinde her geçen gün büyüyen ağımız
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {stats.map((stat, index) => (
+            <div 
+              key={index} 
+              className="p-6 rounded-lg bg-navy border border-turquoise hover:bg-turquoise/10 transition-colors duration-300"
+            >
+              <div className="text-3xl mb-2">{stat.icon}</div>
+              <div className="text-4xl md:text-5xl font-bold text-turquoise mb-2">{stat.value}</div>
+              <div className="text-lg text-white">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Testimonials Section
+const TestimonialsSection = () => {
+  const testimonials = [
+    {
+      content: "PayEra POS sistemini kullanmaya başladıktan sonra işletmemizin satış süreçleri çok daha verimli hale geldi. Müşterilerimiz ödeme sürecinin hızından çok memnun kalıyor.",
+      name: "Mehmet Yılmaz",
+      position: "Restoran Sahibi",
+      image: "https://randomuser.me/api/portraits/men/41.jpg"
+    },
+    {
+      content: "Özellikle gelişmiş raporlama özellikleri sayesinde işletmemizin finansal durumunu daha iyi analiz edebiliyoruz. PayEra ekibinin hızlı teknik desteği de bizi her zaman memnun ediyor.",
+      name: "Ayşe Demir",
+      position: "Mağaza Müdürü",
+      image: "https://randomuser.me/api/portraits/women/65.jpg"
+    },
+    {
+      content: "Çoklu ödeme seçenekleri ve kullanım kolaylığı ile beklentilerimizi fazlasıyla karşıladı. Personelimiz yeni sisteme çok çabuk adapte oldu ve müşteri memnuniyetimiz arttı.",
+      name: "Ali Yıldız",
+      position: "Market Sahibi",
+      image: "https://randomuser.me/api/portraits/men/32.jpg"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-light-gray">
+      <div className="max-w-screen-xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">Müşterilerimiz Ne Diyor?</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            PayEra kullanıcılarının deneyimleri
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <div key={index} className="bg-white p-8 rounded-lg shadow-md relative">
+              <div className="absolute -top-5 left-8 text-5xl text-turquoise opacity-30">"</div>
+              <p className="text-gray-700 mb-6 relative z-10">{testimonial.content}</p>
+              <div className="flex items-center">
+                <img 
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  className="w-12 h-12 rounded-full mr-4 object-cover"
+                />
+                <div>
+                  <h4 className="font-bold text-navy">{testimonial.name}</h4>
+                  <p className="text-sm text-gray-600">{testimonial.position}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// CTA Section
+const DealershipCTA = () => {
+  return (
+    <section className="py-20 bg-navy text-white relative overflow-hidden">
+      {/* Background design elements */}
+      <div className="absolute top-0 right-0 w-1/3 h-full opacity-10">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#00B4D8" d="M42.8,-65C55.9,-56.5,67.2,-44.8,73.7,-30.5C80.3,-16.2,82.2,0.7,77.1,14.8C72,28.9,60,40.3,46.8,47.8C33.7,55.3,19.3,58.9,5.3,59.8C-8.8,60.8,-22.5,59.1,-34.4,52.6C-46.3,46.1,-56.5,34.8,-63.1,20.9C-69.7,7,-72.8,-9.5,-68.7,-23.7C-64.6,-37.9,-53.2,-49.7,-40.1,-58.2C-27,-66.7,-13.5,-71.9,0.6,-72.9C14.7,-73.9,29.7,-73.4,42.8,-65Z" transform="translate(100 100)" />
+        </svg>
+      </div>
+      
+      <div className="max-w-screen-xl mx-auto px-4 text-center relative z-10">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">PayEra Bayisi Olun</h2>
+        <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+          Türkiye'nin hızla büyüyen yazarkasa POS ağına katılın, ayrıcalıklı bayilik fırsatlarından yararlanın.
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <Link to="/bayilik" className="bg-turquoise hover:bg-opacity-80 text-white font-bold py-4 px-8 rounded-lg transition duration-300 inline-block text-center">
+            Bayilik Başvurusu Yap
+          </Link>
+          <Link to="/iletisim" className="bg-transparent border border-white hover:bg-white hover:text-navy text-white font-bold py-4 px-8 rounded-lg transition duration-300 inline-block text-center">
+            Bize Ulaşın
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Newsletter Section
+const NewsletterSection = () => {
+  return (
+    <section className="py-16 bg-light-gray">
+      <div className="max-w-screen-xl mx-auto px-4">
+        <div className="bg-white rounded-xl shadow-md p-8 md:p-12">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">Güncel Kalmak İster misiniz?</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              E-bültenimize üye olarak yeni ürünler, güncellemeler ve sektör haberleri hakkında bilgi sahibi olun.
+            </p>
+          </div>
+          
+          <form className="max-w-2xl mx-auto">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <input 
+                type="email" 
+                placeholder="E-posta adresiniz" 
+                className="flex-grow px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-turquoise"
+                required
+              />
+              <button 
+                type="submit" 
+                className="bg-turquoise hover:bg-navy text-white font-bold py-3 px-6 rounded-lg transition duration-300"
+              >
+                Abone Ol
+              </button>
+            </div>
+            <p className="text-xs text-gray-500 mt-4 text-center">
+              Abone olarak, PayEra'nın gizlilik politikasını kabul etmiş olursunuz. Dilediğiniz zaman abonelikten çıkabilirsiniz.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Home = () => {
+  return (
+    <>
+      <Hero />
+      <FeaturesSection />
+      <ProductsSection />
+      <WhyChooseUsSection />
+      <StatisticsSection />
+      <TestimonialsSection />
+      <DealershipCTA />
+      <NewsletterSection />
+    </>
+  );
+};
+
+export default Home;
+    {
+      title: "Çoklu Ödeme",
+      description: "Nakit, kredi kartı, QR kod, temassız ödemeler ve sanal POS çözümleri ile tüm ödeme yöntemlerini destekler.",
+      icon: (
+        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+        </svg>
+      )
+    },
+    {
+      title: "7/24 Destek",
+      description: "Teknik destek ekibimiz, işletmenizin kesintisiz çalışması için her zaman yanınızda ve hizmetinizdedir.",
+      icon: (
+        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+      )
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-white">
+      <div className="max-w-screen-xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">Özelliklerimiz</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            PayEra POS sistemleri ile işletmenizi bir adım öne taşıyın
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <div 
+              key={index} 
+              className="p-6 rounded-xl text-center group bg-white shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300 hover:border-turquoise hover:-translate-y-1"
+            >
+              <div className="inline-block p-4 rounded-full bg-turquoise text-white mb-6 group-hover:bg-navy transition-colors duration-300">
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-bold text-navy mb-3">{feature.title}</h3>
+              <p className="text-gray-600">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Products Section
+const ProductsSection = () => {
+  const products = [
+    {
+      id: "payera-a90",
+      name: "PayEra A90",
+      description: "Android tabanlı, dokunmatik ekranlı, kompakt tasarımlı işletmeniz için ideal yazarkasa POS çözümü.",
+      image: "/images/payera-a90.png",
+      fallbackImage: "https://via.placeholder.com/300x400/FFFFFF/4fd1c5?text=PayEra+A90",
+      features: ["Android İşletim Sistemi", "5.5\" Dokunmatik Ekran", "4G & Wi-Fi Bağlantı", "Hızlı Termal Yazıcı"]
+    },
+    {
+      id: "payera-507",
+      name: "PayEra 507",
+      description: "Yeni teknoloji ile geliştirilmiş, entegre yazılımlı, yüksek performanslı yeni nesil yazarkasa POS sistemi.",
+      image: "/images/payera-507.png",
+      fallbackImage: "https://via.placeholder.com/300x400/FFFFFF/4fd1c5?text=PayEra+507",
+      features: ["Özel İşletim Sistemi", "7\" Renkli Ekran", "NFC & Temassız Ödeme", "Uzun Ömürlü Batarya"]
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-light-gray">
+      <div className="max-w-screen-xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">Yenilikçi Ürünlerimiz</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            İşletmenizin ihtiyaçlarına uygun modern ve güvenilir POS çözümleri
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {products.map((product) => (
+            <div key={product.id} className="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl group">
+              <div className="flex flex-col md:flex-row">
+                <div className="md:w-2/5 bg-gray-100 p-6 flex items-center justify-center">
+                  <img 
+                    src={product.image} 
+                    alt={product.name} 
+                    className="h-64 object-contain transition-transform duration-500 group-hover:scale-110"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = product.fallbackImage;
+                    }}
+                  />
+                </div>
+                <div className="md:w-3/5 p-6">
+                  <h3 className="text-2xl font-bold text-navy mb-3">{product.name}</h3>
+                  <p className="text-gray-700 mb-4">{product.description}</p>
+                  
+                  <div className="mb-6">
+                    <h4 className="text-sm font-semibold text-gray-500 mb-2">ÖNE ÇIKAN ÖZELLİKLER</h4>
+                    <ul className="space-y-2">
+                      {product.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-center text-gray-700">
+                          <svg className="w-4 h-4 text-turquoise mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <Link 
+                    to={`/urunler/${product.id}`} 
+                    className="inline-flex items-center text-navy font-medium border-b-2 border-turquoise pb-1 transition-colors duration-300 hover:text-turquoise"
+                  >
+                    Detaylı İncele
+                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Why Choose Us Section
+const WhyChooseUsSection = () => {
+  const advantages = [
+    {
+      title: "Hızlı İşlem",
+      description: "Güçlü donanımı sayesinde ödeme işlemlerini saniyeler içinde tamamlar, müşteri bekletme süresini minimize eder.",
+      icon: (
+        <svg className="w-12 h-12 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      )
+    },
+    {
+      title: "Güvenli Ödeme",
+      description: "En güncel güvenlik standartlarıyla müşterilerinizin kart bilgilerini korur, işletmenize güven sağlar.",
+      icon: (
+        <svg className="w-12 h-12 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+      )
+    },
+    {
+      title: "Gelişmiş Analitik",
+      description: "Detaylı satış raporları ve analiz araçlarıyla işletmenizin performansını anlık olarak takip edin ve stratejik kararlar alın.",
+      icon: (
+        <svg className="w-12 h-12 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      )
+    },
+    {
+      title: "Uzman Destek",
+      description: "Teknik sorunlarınızda uzman ekibimiz 7/24 yanınızda, işletmenizin kesintisiz çalışmasını sağlar.",
+      icon: (
+        <svg className="w-12 h-12 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+      )
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-white relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute -top-20 -right-20 w-64 h-64 bg-light-gray rounded-full opacity-50"></div>
+      <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-light-gray rounded-full opacity-30"></div>
+      
+      <div className="max-w-screen-xl mx-auto px-4 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">Neden PayEra?</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            İşletmelerin dijital dönüşüm yolculuğunda güvenilir ortağınız
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {advantages.map((item, index) => (
+            <div 
+              key={index} 
+              className="bg-white p-6 rounded-lg flex items-start space-x-4 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100"
+            >
+              <div className="p-3 rounded-full bg-light-gray">
+                {item.icon}
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-navy mb-2">{item.title}</h3>
+                <p className="text-gray-700">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Statistics Section
+const StatisticsSection = () => {
+  const stats = [
+    { value: "10,000+", label: "Aktif Cihaz", icon: "💻" },
+    { value: "5,000+", label: "Mutlu Müşteri", icon: "😊" },
+    { value: "100+", label: "Bayi Ağı", icon: "🏢" },
+    { value: "7/24", label: "Teknik Destek", icon: "🛠️" }
+  ];
+
+  return (
+    <section className="py-20 bg-navy text-white">
+      <div className="max-w-screen-xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Rakamlarla PayEra</h2>
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            Türkiye genelinde her geçen gün büyüyen ağımız
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {stats.map((stat, index) => (
+            <div 
+              key={index} 
+              className="p-6 rounded-lg bg-navy border border-turquoise hover:bg-turquoise/10 transition-colors duration-300"
+            >
+              <div className="text-3xl mb-2">{stat.icon}</div>
+              <div className="text-4xl md:text-5xl font-bold text-turquoise mb-2">{stat.value}</div>
+              <div className="text-lg text-white">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Testimonials Section
+const TestimonialsSection = () => {
+  const testimonials = [
+    {
+      content: "PayEra POS sistemini kullanmaya başladıktan sonra işletmemizin satış süreçleri çok daha verimli hale geldi. Müşterilerimiz ödeme sürecinin hızından çok memnun kalıyor.",
+      name: "Mehmet Yılmaz",
+      position: "Restoran Sahibi",
+      image: "https://randomuser.me/api/portraits/men/41.jpg"
+    },
+    {
+      content: "Özellikle gelişmiş raporlama özellikleri sayesinde işletmemizin finansal durumunu daha iyi analiz edebiliyoruz. PayEra ekibinin hızlı teknik desteği de bizi her zaman memnun ediyor.",
+      name: "Ayşe Demir",
+      position: "Mağaza Müdürü",
+      image: "https://randomuser.me/api/portraits/women/65.jpg"
+    },
+    {
+      content: "Çoklu ödeme seçenekleri ve kullanım kolaylığı ile beklentilerimizi fazlasıyla karşıladı. Personelimiz yeni sisteme çok çabuk adapte oldu ve müşteri memnuniyetimiz arttı.",
+      name: "Ali Yıldız",
+      position: "Market Sahibi",
+      image: "https://randomuser.me/api/portraits/men/32.jpg"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-light-gray">
+      <div className="max-w-screen-xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">Müşterilerimiz Ne Diyor?</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            PayEra kullanıcılarının deneyimleri
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <div key={index} className="bg-white p-8 rounded-lg shadow-md relative">
+              <div className="absolute -top-5 left-8 text-5xl text-turquoise opacity-30">"</div>
+              <p className="text-gray-700 mb-6 relative z-10">{testimonial.content}</p>
+              <div className="flex items-center">
+                <img 
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  className="w-12 h-12 rounded-full mr-4 object-cover"
+                />
+                <div>
+                  <h4 className="font-bold text-navy">{testimonial.name}</h4>
+                  <p className="text-sm text-gray-600">{testimonial.position}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// CTA Section
+const DealershipCTA = () => {
+  return (
+    <section className="py-20 bg-navy text-white relative overflow-hidden">
+      {/* Background design elements */}
+      <div className="absolute top-0 right-0 w-1/3 h-full opacity-10">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#00B4D8" d="M42.8,-65C55.9,-56.5,67.2,-44.8,73.7,-30.5C80.3,-16.2,82.2,0.7,77.1,14.8C72,28.9,60,40.3,46.8,47.8C33.7,55.3,19.3,58.9,5.3,59.8C-8.8,60.8,-22.5,59.1,-34.4,52.6C-46.3,46.1,-56.5,34.8,-63.1,20.9C-69.7,7,-72.8,-9.5,-68.7,-23.7C-64.6,-37.9,-53.2,-49.7,-40.1,-58.2C-27,-66.7,-13.5,-71.9,0.6,-72.9C14.7,-73.9,29.7,-73.4,42.8,-65Z" transform="translate(100 100)" />
+        </svg>
+      </div>
+      
+      <div className="max-w-screen-xl mx-auto px-4 text-center relative z-10">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">PayEra Bayisi Olun</h2>
+        <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+          Türkiye'nin hızla büyüyen yazarkasa POS ağına katılın, ayrıcalıklı bayilik fırsatlarından yararlanın.
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <Link to="/bayilik" className="bg-turquoise hover:bg-opacity-80 text-white font-bold py-4 px-8 rounded-lg transition duration-300 inline-block text-center">
+            Bayilik Başvurusu Yap
+          </Link>
+          <Link to="/iletisim" className="bg-transparent border border-white hover:bg-white hover:text-navy text-white font-bold py-4 px-8 rounded-lg transition duration-300 inline-block text-center">
+            Bize Ulaşın
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Newsletter Section
+const NewsletterSection = () => {
+  return (
+    <section className="py-16 bg-light-gray">
+      <div className="max-w-screen-xl mx-auto px-4">
+        <div className="bg-white rounded-xl shadow-md p-8 md:p-12">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">Güncel Kalmak İster misiniz?</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              E-bültenimize üye olarak yeni ürünler, güncellemeler ve sektör haberleri hakkında bilgi sahibi olun.
+            </p>
+          </div>
+          
+          <form className="max-w-2xl mx-auto">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <input 
+                type="email" 
+                placeholder="E-posta adresiniz" 
+                className="flex-grow px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-turquoise"
+                required
+              />
+              <button 
+                type="submit" 
+                className="bg-turquoise hover:bg-navy text-white font-bold py-3 px-6 rounded-lg transition duration-300"
+              >
+                Abone Ol
+              </button>
+            </div>
+            <p className="text-xs text-gray-500 mt-4 text-center">
+              Abone olarak, PayEra'nın gizlilik politikasını kabul etmiş olursunuz. Dilediğiniz zaman abonelikten çıkabilirsiniz.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Home = () => {
+  return (
+    <>
+      <Hero />
+      <FeaturesSection />
+      <ProductsSection />
+      <WhyChooseUsSection />
+      <StatisticsSection />
+      <TestimonialsSection />
+      <DealershipCTA />
+      <NewsletterSection />
+    </>
+  );
+};
+
+export default Home;
