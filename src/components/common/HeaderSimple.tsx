@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { getImageUrl } from '../../utils/imageLoader';
 
 const HeaderSimple = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,7 +28,7 @@ const HeaderSimple = () => {
         <div>
           <Link to="/" className="flex items-center space-x-2">
             <img 
-              src="/images/logo.svg" 
+              src={getImageUrl('/images/logo.svg')}
               alt="PayEra" 
               className="h-8"
               onError={(e) => {

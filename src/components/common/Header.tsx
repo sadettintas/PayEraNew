@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { getImageUrl } from '../../utils/imageLoader';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,7 +34,7 @@ const Header = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
               <img 
-                src="/images/logo.svg" 
+                src={getImageUrl('/images/logo.svg')}
                 alt="PayEra" 
                 className="h-8"
                 onError={(e) => {

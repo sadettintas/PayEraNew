@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { getImageUrl } from '../../utils/imageLoader';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,7 +12,7 @@ const Footer = () => {
             <div className="mb-4">
               <Link to="/" className="flex items-center">
                 <img 
-                  src="/images/logo.svg" 
+                  src={getImageUrl('/images/logo.svg')}
                   alt="PayEra Logo" 
                   className="h-10 mr-2"
                   onError={(e) => {

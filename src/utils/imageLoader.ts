@@ -2,6 +2,34 @@
  * Resim yükleme işlemleri için yardımcı fonksiyonlar
  */
 
+// GitHub Pages için temel URL yolunu belirleme fonksiyonu
+export const getBaseUrl = () => {
+  // Production'da GitHub Pages için /PayEraNew dizinini kullan
+  // Geliştirme ortamında kök dizini kullan
+  const isProduction = import.meta.env.PROD;
+  return isProduction ? '/PayEraNew' : '';
+};
+
+/**
+ * Görsel URL'sini düzeltir, temel URL'yi ekler
+ * @param {string} url - Orijinal görüntü URL'si
+ * @returns {string} - Tam URL
+ */
+export const getImageUrl = (url: string) => {
+  // URL zaten http veya https ile başlıyorsa, olduğu gibi döndür
+  if (url.startsWith('http://') || url.startsWith('https://')) {
+    return url;
+  }
+  
+  // URL / ile başlıyorsa, temel URL'yi başına ekle
+  if (url.startsWith('/')) {
+    return `${getBaseUrl()}${url}`;
+  }
+  
+  // URL / ile başlamıyorsa, temel URL ve / ekle
+  return `${getBaseUrl()}/${url}`;
+};
+
 /**
  * Görüntüleri önceden yükler
  * @param {string[]} imageUrls - Önceden yüklenecek görüntü URL'leri
@@ -25,8 +53,8 @@ export const preloadImages = (imageUrls: string[], onComplete?: () => void) => {
       console.error(`Failed to preload image: ${url}`);
       checkAllLoaded();
     };
-    // Önbelleklemeyi zorlamak için timestamp ekle
-    img.src = url + '?v=' + new Date().getTime();
+    // URL'yi düzelt ve önbelleklemeyi zorlamak için timestamp ekle
+    img.src = getImageUrl(url) + '?v=' + new Date().getTime();
   });
 };
 
@@ -36,7 +64,7 @@ export const preloadImages = (imageUrls: string[], onComplete?: () => void) => {
  * @returns {string} - Önbellek busting parametresi ile güncellenmiş URL
  */
 export const getImageWithCacheBusting = (url: string) => {
-  return `${url}?v=${new Date().getTime()}`;
+  return `${getImageUrl(url)}?v=${new Date().getTime()}`;
 };
 
 /**
