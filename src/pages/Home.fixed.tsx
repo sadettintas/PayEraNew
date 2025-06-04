@@ -13,7 +13,8 @@ const LoadingIndicator = () => (
 // Hero Section with Animated Carousel
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const slideInterval = useRef<number | null>(null);
+  // ReturnType<typeof setInterval> ile doğru türü belirtiyoruz
+  const slideInterval = useRef<ReturnType<typeof setInterval> | null>(null);
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
   const slides = [
