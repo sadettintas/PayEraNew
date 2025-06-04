@@ -1,33 +1,51 @@
 import { Routes, Route } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
 import Layout from './components/Layout';
-import Home from './pages/Home.fixed';
-import Hakkimizda from './pages/Hakkimizda.fixed';
-import Products from './pages/Products';
-import PayEraA90 from './pages/PayEraA90';
-import PayEra507 from './pages/PayEra507';
-import PayEraX10 from './pages/PayEraX10';
-import PayEraS20 from './pages/PayEraS20';
-import PayEraPro30 from './pages/PayEraPro30';
-import Dealership from './pages/Dealership';
-import Contact from './pages/Contact';
-import Support from './pages/Support';
-import Careers from './pages/Careers';
-import ShortURLPage from './pages/ShortURL';
-import ProductsShortURL from './pages/ProductsShortURL';
-import ContactShortURL from './pages/ContactShortURL';
-import DealershipShortURL from './pages/DealershipShortURL';
+import LoadingProvider from './components/common/LoadingProvider';
+import LoadingOverlay from './components/common/LoadingOverlay';
 import ErrorBoundary from './components/common/ErrorBoundary';
+
+// Lazy loaded components for better performance
+const Home = lazy(() => import('./pages/Home.fixed'));
+const Hakkimizda = lazy(() => import('./pages/Hakkimizda.fixed'));
+const Products = lazy(() => import('./pages/Products'));
+const PayEraA90 = lazy(() => import('./pages/PayEraA90'));
+const PayEra507 = lazy(() => import('./pages/PayEra507'));
+const PayEraX10 = lazy(() => import('./pages/PayEraX10'));
+const PayEraS20 = lazy(() => import('./pages/PayEraS20'));
+const PayEraPro30 = lazy(() => import('./pages/PayEraPro30'));
+const Dealership = lazy(() => import('./pages/Dealership'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Support = lazy(() => import('./pages/Support'));
+const Careers = lazy(() => import('./pages/Careers'));
+const ShortURLPage = lazy(() => import('./pages/ShortURL'));
+const ProductsShortURL = lazy(() => import('./pages/ProductsShortURL'));
+const ContactShortURL = lazy(() => import('./pages/ContactShortURL'));
+const DealershipShortURL = lazy(() => import('./pages/DealershipShortURL'));
+
+// Page loading fallback component
+const PageLoading = () => (
+  <div className="flex items-center justify-center min-h-screen">
+    <div className="flex flex-col items-center">
+      <div className="w-16 h-16 border-4 border-gray-200 border-t-primary rounded-full animate-spin"></div>
+      <p className="mt-4 text-gray-600">Sayfa yükleniyor...</p>
+    </div>
+  </div>
+);
 
 function App() {
   return (
     <ErrorBoundary>
-      <Layout>
-        <Routes>
-          <Route path="/" element={
-            <ErrorBoundary>
-              <Home />
-            </ErrorBoundary>
-          } />
+      <LoadingProvider>
+        <LoadingOverlay />
+        <Layout>
+          <Suspense fallback={<PageLoading />}>
+            <Routes>
+              <Route path="/" element={
+                <ErrorBoundary>
+                  <Home />
+                </ErrorBoundary>
+              } />
           <Route path="/hakkimizda" element={
             <ErrorBoundary>
               <Hakkimizda />
@@ -54,7 +72,9 @@ function App() {
           <Route path="/i" element={<ContactShortURL />} />
           <Route path="/d" element={<DealershipShortURL />} />
         </Routes>
-      </Layout>
+          </Suspense>
+        </Layout>
+      </LoadingProvider>
     </ErrorBoundary>
   );
 }
