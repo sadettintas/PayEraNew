@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import { preloadAllSiteImages } from '../../utils/imageLoader';
+import { preloadAllSiteImages, getImageUrl } from '../../utils/imageLoader';
 
 type LoadingContextType = {
   isLoading: boolean;
@@ -112,7 +112,7 @@ const LoadingProvider: React.FC<LoadingProviderProps> = ({ children }) => {
         loadedCount++;
         checkComplete();
       };
-      img.src = require('../../utils/imageLoader').getImageUrl(imageSrc) + '?v=' + new Date().getTime();
+      img.src = getImageUrl(imageSrc) + '?v=' + new Date().getTime();
     });
 
     // 7 saniye sonra yükleme tamamlanmadıysa yine de tamamla (sonsuz loading engeli)
