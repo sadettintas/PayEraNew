@@ -13,7 +13,7 @@ const LoadingIndicator = () => (
 // Hero Section with Animated Carousel
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const slideInterval = useRef<NodeJS.Timeout | null>(null);
+  const slideInterval = useRef<number | null>(null);
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
   const slides = [

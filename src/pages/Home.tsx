@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from 'react';
 // Hero Section with Animated Carousel
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const slideInterval = useRef<NodeJS.Timeout | null>(null);
+  const slideInterval = useRef<number | null>(null);
 
   const slides = [
     {
