@@ -3,11 +3,10 @@
  */
 
 // GitHub Pages için temel URL yolunu belirleme fonksiyonu
+
 export const getBaseUrl = () => {
-  // Production'da GitHub Pages için /PayEraNew dizinini kullan
-  // Geliştirme ortamında kök dizini kullan
-  const isProduction = import.meta.env.PROD;
-  return isProduction ? '/PayEraNew' : '';
+  // Her zaman /PayEraNew base path kullan (hem prod hem dev için)
+  return '/PayEraNew';
 };
 
 /**
@@ -15,18 +14,11 @@ export const getBaseUrl = () => {
  * @param {string} url - Orijinal görüntü URL'si
  * @returns {string} - Tam URL
  */
+
 export const getImageUrl = (url: string) => {
-  // URL zaten http veya https ile başlıyorsa, olduğu gibi döndür
-  if (url.startsWith('http://') || url.startsWith('https://')) {
-    return url;
-  }
-  
-  // URL / ile başlıyorsa, temel URL'yi başına ekle
-  if (url.startsWith('/')) {
-    return `${getBaseUrl()}${url}`;
-  }
-  
-  // URL / ile başlamıyorsa, temel URL ve / ekle
+  if (!url) return '';
+  if (url.startsWith('http://') || url.startsWith('https://')) return url;
+  if (url.startsWith('/')) return `${getBaseUrl()}${url}`;
   return `${getBaseUrl()}/${url}`;
 };
 

@@ -7,9 +7,10 @@ echo "Running post-build image copy script..."
 mkdir -p dist/images
 echo "Created dist/images directory"
 
-# Copy all images from public/images to dist/images
-cp -r public/images/* dist/images/
-echo "Copied images from public/images to dist/images"
+
+# Copy all images from public/images to dist/images (including hidden and all file types)
+rsync -av --ignore-existing public/images/ dist/images/
+echo "Copied images from public/images to dist/images (rsync)"
 
 # Check for zero-byte or missing hero images and replace them with placeholder images
 for img in "hero-image-1.jpg:hero-image.jpg" "hero-image-2.jpg:hero-image.jpg" "hero-image-3.jpg:hero-image.jpg" "testimonial-default.jpg:testimonials.jpg" "team-member.jpg:team.jpg"; do

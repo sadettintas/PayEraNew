@@ -65,6 +65,8 @@ const LoadingProvider: React.FC<LoadingProviderProps> = ({ children }) => {
     startLoading();
 
     // Tüm görselleri önceden yükle
+
+    // Tüm görselleri getImageUrl ile preload et
     const imagesToLoad = [
       '/images/product-x10.png',
       '/images/product-s20.png',
@@ -78,48 +80,52 @@ const LoadingProvider: React.FC<LoadingProviderProps> = ({ children }) => {
       '/images/logo.svg',
       '/images/company-image.jpg',
       '/images/dealership.jpg',
-      '/images/support.jpg'
+      '/images/support.jpg',
+      '/images/business-support.jpg',
+      '/images/chairman.jpg',
+      '/images/vice-chairman.jpg',
+      '/images/team.jpg',
+      '/images/testimonials.jpg',
+      '/images/contact.jpg',
+      '/images/testimonial-default.jpg',
+      '/images/team-member.jpg'
     ];
 
-    const totalImages = imagesToLoad.length;
     let loadedCount = 0;
+    const totalImages = imagesToLoad.length;
+    let completed = false;
 
-    imagesToLoad.forEach(imageSrc => {
-      const img = new Image();
-      
-      img.onload = () => {
-        loadedCount++;
-        if (loadedCount === totalImages) {
-          // Tüm resimler yüklendi, yüklemeyi tamamla
-          completeLoading();
-        }
-      };
-      
-      img.onerror = () => {
-        console.error(`Failed to preload image: ${imageSrc}`);
-        loadedCount++;
-        if (loadedCount === totalImages) {
-          completeLoading();
-        }
-      };
-      
-      img.src = imageSrc.startsWith('http') ? imageSrc : 
-               imageSrc.startsWith('/') ? `/PayEraNew${imageSrc}` : `/PayEraNew/${imageSrc}`;
-    });
-
-    // 10 saniye içinde yükleme tamamlanmazsa, kullanıcı deneyimini geliştirmek için zorunlu tamamlama
-    const timeout = setTimeout(() => {
-      if (isLoading) {
-        console.warn('Loading timeout reached, forcing completion');
+    const checkComplete = () => {
+      if (!completed && loadedCount >= totalImages) {
+        completed = true;
         completeLoading();
       }
-    }, 10000);
+    };
+
+    imagesToLoad.forEach(imageSrc => {
+      const img = new window.Image();
+      img.onload = () => {
+        loadedCount++;
+        checkComplete();
+      };
+      img.onerror = () => {
+        loadedCount++;
+        checkComplete();
+      };
+      img.src = require('../../utils/imageLoader').getImageUrl(imageSrc) + '?v=' + new Date().getTime();
+    });
+
+    // 7 saniye sonra yükleme tamamlanmadıysa yine de tamamla (sonsuz loading engeli)
+    const timeout = setTimeout(() => {
+      if (!completed) {
+        completed = true;
+        completeLoading();
+      }
+    }, 7000);
 
     return () => {
       clearTimeout(timeout);
-      if (progressInterval) {
-        clearInterval(progressInterval);
-      }
+      if (progressInterval) clearInterval(progressInterval);
     };
   }, []);
 

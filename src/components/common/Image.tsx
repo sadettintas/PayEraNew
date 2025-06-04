@@ -27,12 +27,16 @@ const Image: React.FC<ImageProps> = ({
 
   useEffect(() => {
     // Resim URL'sini önbelleği atlatmak için bir parametre ile yükle
+    if (!src) return;
     const timestamp = new Date().getTime();
     setImageUrl(`${getImageUrl(src)}?v=${timestamp}`);
+    setLoaded(false);
+    setError(false);
   }, [src]);
   
   // Hata durumunda fallback göster veya default bir placeholder kullan
   const handleError = () => {
+    if (error) return;
     setError(true);
     if (fallback) {
       setImageUrl(getImageUrl(fallback));
