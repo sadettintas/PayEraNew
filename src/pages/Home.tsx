@@ -410,7 +410,7 @@ const StatisticsSection = () => {
 // Testimonials Section
 const TestimonialsSection = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const testimonialInterval = useRef<NodeJS.Timeout | null>(null);
+  const testimonialInterval = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const testimonials = [
     {

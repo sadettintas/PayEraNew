@@ -991,7 +991,7 @@ const Newsletter = () => {
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState(0);
-  const loadingTimer = useRef<NodeJS.Timeout | null>(null);
+  const loadingTimer = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     console.log('Home page mounted');
