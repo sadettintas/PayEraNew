@@ -4,9 +4,11 @@
 
 /* Custom styles that don't interfere with Tailwind */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', 'Roboto', system-ui, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #546E7A; /* Ana metin rengi */
+  background-color: #F4F6F7; /* Arka plan rengi */
 }
 
 body {
@@ -14,12 +16,115 @@ body {
   min-height: 100vh;
 }
 
-/* Custom animations if needed */
+/* Custom animations and utilities */
 @layer utilities {
   .animation-delay-200 {
     animation-delay: 0.2s;
   }
   .animation-delay-400 {
     animation-delay: 0.4s;
+  }
+}
+
+/* Component-based styles */
+@layer components {
+  /* Card hover effects */
+  .hover-card {
+    @apply transition-all duration-300 ease-in-out bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105;
+  }
+  
+  /* Button variants */
+  .btn {
+    @apply py-3 px-6 rounded-full font-semibold transition-all duration-300 drop-shadow-md;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark active:bg-primary-dark/90 disabled:opacity-50;
+  }
+  
+  .btn-accent {
+    @apply bg-accent text-white hover:bg-accent/90 active:bg-accent/80 disabled:opacity-50;
+  }
+  
+  .btn-outline {
+    @apply bg-transparent border-2 border-primary text-primary hover:bg-primary/10 active:bg-primary/20 disabled:opacity-50;
+  }
+  
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-text-heading;
+  }
+  
+  p {
+    @apply font-normal text-text-body;
+  }
+  
+  /* Improved contrast for text on dark backgrounds */
+  .bg-primary p,
+  .bg-primary-dark p,
+  .bg-primary-light p,
+  [class*="bg-primary"] p {
+    @apply text-white/95;
+  }
+  
+  .bg-primary h1, 
+  .bg-primary h2, 
+  .bg-primary h3, 
+  .bg-primary h4, 
+  .bg-primary h5, 
+  .bg-primary h6,
+  .bg-primary-dark h1,
+  .bg-primary-dark h2,
+  .bg-primary-dark h3,
+  .bg-primary-dark h4,
+  .bg-primary-dark h5,
+  .bg-primary-dark h6,
+  .bg-primary-light h1,
+  .bg-primary-light h2,
+  .bg-primary-light h3,
+  .bg-primary-light h4,
+  .bg-primary-light h5,
+  .bg-primary-light h6,
+  [class*="bg-primary"] h1,
+  [class*="bg-primary"] h2,
+  [class*="bg-primary"] h3,
+  [class*="bg-primary"] h4,
+  [class*="bg-primary"] h5,
+  [class*="bg-primary"] h6 {
+    @apply text-white font-bold;
+  }
+  
+  /* Ensure all links on colored backgrounds are readable */
+  .bg-primary a,
+  .bg-primary-dark a,
+  .bg-primary-light a,
+  [class*="bg-primary"] a {
+    @apply text-white hover:text-white/80 hover:underline transition-colors;
+  }
+  
+  /* Text with icons on colored backgrounds */
+  .bg-primary .text-with-icon,
+  .bg-primary-dark .text-with-icon,
+  .bg-primary-light .text-with-icon,
+  [class*="bg-primary"] .text-with-icon {
+    @apply text-white;
+  }
+  
+  /* Card text on dark backgrounds */
+  .bg-primary .card-text,
+  .bg-primary-dark .card-text,
+  .bg-primary-light .card-text,
+  [class*="bg-primary"] .card-text {
+    @apply text-white/95;
+  }
+  
+  /* Link styles with better hover effects */
+  .link {
+    @apply text-primary hover:text-primary-dark hover:underline transition-colors;
+  }
+  
+  /* Footer link improvements */
+  footer a {
+    @apply hover:text-white hover:underline transition-colors;
   }
 }

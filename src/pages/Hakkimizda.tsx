@@ -45,7 +45,7 @@ const Hakkimizda = () => {
       name: "Ali Yılmaz",
       position: "CEO ",
       bio: "Fintech sektöründe 20 yılı aşkın deneyimiyle PayEra'yı Türkiye'nin lider ödeme sistemleri sağlayıcısı konumuna getirdi.",
-      image: "/src/assets/images/chairman.jpg",
+      image: "images/chairman.jpg",
       fallbackImage: "https://via.placeholder.com/200x200/0088A9/FFFFFF?text=AY",
       icon: "🚀"
     },
@@ -53,7 +53,7 @@ const Hakkimizda = () => {
       name: "Zeynep Kaya",
       position: "CTO",
       bio: "Yazılım mühendisliği alanında uzman olan Zeynep, PayEra'nın teknolojik altyapısının arkasındaki isim.",
-      image: "/src/assets/images/vice-chairman.jpg",
+      image: "images/vice-chairman.jpg",
       fallbackImage: "https://via.placeholder.com/200x200/0088A9/FFFFFF?text=ZK",
       icon: "💻"
     },
@@ -61,7 +61,7 @@ const Hakkimizda = () => {
       name: "Mehmet Demir",
       position: "Satış Direktörü",
       bio: "Satış ve pazarlama stratejileri konusunda uzman olan Mehmet, PayEra'nın büyüme stratejilerini yönetiyor.",
-      image: "/src/assets/images/team.jpg",
+      image: "images/team.jpg",
       fallbackImage: "https://via.placeholder.com/200x200/0088A9/FFFFFF?text=MD",
       icon: "📈"
     },
@@ -69,7 +69,7 @@ const Hakkimizda = () => {
       name: "Ayşe Çelik",
       position: "Müşteri İlişkileri Direktörü",
       bio: "Müşteri deneyimi konusunda uzman olan Ayşe, PayEra'nın müşteri memnuniyetini en üst seviyede tutmak için çalışıyor.",
-      image: "/src/assets/images/about-us.jpg",
+      image: "images/about-us.jpg",
       fallbackImage: "https://via.placeholder.com/200x200/0088A9/FFFFFF?text=AÇ",
       icon: "👥"
     }
@@ -102,7 +102,7 @@ const Hakkimizda = () => {
               <div className="relative">
                 <div className="bg-gray-100 p-1 rounded-lg hover:shadow-2xl transition-all duration-300">
                   <img 
-                    src="/src/assets/images/company-image.jpg" 
+                    src="images/company-image.jpg" 
                     alt="PayEra Genel Merkez Ofisi ve Çalışanlar" 
                     className="rounded-lg w-full h-auto shadow-md"
                     onError={(e) => {
@@ -177,7 +177,7 @@ const Hakkimizda = () => {
               {/* Left Column - Image */}
               <div className="md:w-1/3 relative">
                 <img 
-                  src="/src/assets/images/chairman.jpg" 
+                  src="images/chairman.jpg" 
                   alt="Nurullah Türk - Yönetim Kurulu Başkanı" 
                   className="w-full h-full object-cover md:min-h-[500px]"
                   onError={(e) => {

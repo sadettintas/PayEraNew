@@ -1,0 +1,52 @@
+/* Emergency CSS for fixing layout issues */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* Force loading visibility */
+.header, .footer, main {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ensure text readability */
+.text-white {
+  color: #fff !important;
+}
+
+.text-text-heading {
+  color: #263238 !important;
+}
+
+.text-text-body {
+  color: #546E7A !important;
+}
+
+/* Colors */
+.bg-primary {
+  background-color: #0097A7 !important;
+}
+
+.bg-primary-dark {
+  background-color: #007C91 !important;
+}
+
+.bg-accent {
+  background-color: #FFB300 !important;
+}
+
+/* Fix padding issues */
+.pt-20 {
+  padding-top: 5rem !important;
+}

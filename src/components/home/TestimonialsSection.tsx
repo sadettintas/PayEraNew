@@ -45,21 +45,21 @@ const TestimonialsSection: React.FC = () => {
       author: "Ahmet Yılmaz",
       position: "Genel Müdür",
       company: "MarketPlus Zinciri",
-      imageSrc: "/src/assets/images/testimonials.jpg"
+      imageSrc: "images/testimonials.jpg"
     },
     {
       text: "Teknik destek ekibi her zaman hızlı ve çözüm odaklı yaklaşımlarıyla bizlere yardımcı oluyor. Entegrasyon sürecimizde de profesyonel bir destek aldık. PayEra ile çalışmaktan çok memnunuz.",
       author: "Ayşe Kaya",
       position: "Operasyon Müdürü",
       company: "Cafe Bistro",
-      imageSrc: "/public/images/testimonial-default.jpg"
+      imageSrc: "images/testimonial-default.jpg"
     },
     {
       text: "Eski POS cihazımızla yaşadığımız tüm sorunlar PayEra 507 ile çözüldü. Artık tüm satış ve stok işlemlerimizi tek bir yerden yönetebiliyoruz. Bayiliğini yapmaktan gurur duyuyoruz.",
       author: "Mehmet Demir",
       position: "İşletme Sahibi",
       company: "TeknoMarket",
-      imageSrc: "/src/assets/images/business-support.jpg"
+      imageSrc: "images/business-support.jpg"
     }
   ];
 
@@ -100,7 +100,7 @@ const TestimonialsSection: React.FC = () => {
                           className="h-full w-full object-cover rounded-full"
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
-                            target.src = "/public/images/testimonial-default.jpg";
+                            target.src = "images/testimonial-default.jpg";
                           }}
                         />
                       ) : (

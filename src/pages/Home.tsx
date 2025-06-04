@@ -10,20 +10,20 @@ const Hero = () => {
     {
       title: "Yeni Nesil Yazarkasa POS Sistemleri",
       description: "PayEra ile işletmenizi dijital dönüşümün merkezine taşıyın. Güvenli, hızlı ve kullanımı kolay yazarkasa POS çözümleri.",
-      image: "/src/assets/images/payera-a90.jpg",
-      fallbackImage: "/public/images/hero-image-1.jpg"
+      image: "/images/payera-a90.jpg",
+      fallbackImage: "/images/hero-image-1.jpg"
     },
     {
       title: "Akıllı Ödeme Çözümleri",
       description: "Tüm ödeme yöntemlerini tek bir cihazda toplayarak işletmenize müşteri memnuniyeti ve operasyonel verimlilik sağlayın.",
-      image: "/src/assets/images/payera-507.jpg",
-      fallbackImage: "/public/images/hero-image-2.jpg"
+      image: "/images/payera-507.jpg",
+      fallbackImage: "/images/hero-image-2.jpg"
     },
     {
       title: "Entegre İş Çözümleri",
       description: "Stok takibi, müşteri yönetimi ve muhasebe entegrasyonları ile tüm işletme ihtiyaçlarınızı PayEra ile karşılayın.",
-      image: "/src/assets/images/product-features.jpg",
-      fallbackImage: "/public/images/hero-image-3.jpg"
+      image: "/images/product-features.jpg",
+      fallbackImage: "/images/hero-image-3.jpg"
     }
   ];
 
@@ -51,22 +51,22 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative bg-navy text-white overflow-hidden">
-      <div className="max-w-screen-xl mx-auto px-4 pt-20 pb-24 md:pt-28 md:pb-32 flex flex-col md:flex-row items-center">
+    <section className="relative bg-primary text-white overflow-hidden py-16 sm:py-20 md:py-24">
+      <div className="max-w-screen-xl mx-auto px-6 flex flex-col-reverse md:flex-row items-center">
         {/* Hero Text Content */}
-        <div className="md:w-1/2 z-10 mb-10 md:mb-0 text-center md:text-left">
+        <div className="md:w-1/2 z-10 mt-12 md:mt-0 md:mb-0 text-center md:text-left">
           <div className="opacity-0 animate-fade-in-up animation-delay-200">
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight">
               {slides[currentSlide].title}
             </h1>
-            <p className="text-xl text-gray-300 mb-8 max-w-lg mx-auto md:mx-0">
+            <p className="text-xl text-white/90 mb-10 max-w-lg mx-auto md:mx-0">
               {slides[currentSlide].description}
             </p>
             <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-              <Link to="/urunler" className="bg-turquoise hover:bg-opacity-80 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-block">
+              <Link to="/urunler" className="btn btn-accent inline-block shadow-lg hover:scale-105">
                 Ürünlerimiz
               </Link>
-              <Link to="/iletisim" className="bg-transparent hover:bg-white hover:bg-opacity-10 border-2 border-turquoise text-turquoise font-bold py-3 px-8 rounded-lg transition duration-300 inline-block">
+              <Link to="/iletisim" className="btn btn-outline inline-block hover:scale-105">
                 İletişime Geçin
               </Link>
             </div>
@@ -79,7 +79,7 @@ const Hero = () => {
             <img 
               src={slides[currentSlide].image} 
               alt={slides[currentSlide].title} 
-              className="mx-auto max-h-[400px] object-contain rounded-md shadow-xl border border-gray-200"
+              className="mx-auto max-w-[320px] w-80 object-contain rounded-xl shadow-xl border border-white/10"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.onerror = null;
@@ -96,7 +96,7 @@ const Hero = () => {
               key={index}
               onClick={() => goToSlide(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                currentSlide === index ? 'bg-turquoise w-6' : 'bg-gray-500 bg-opacity-50'
+                currentSlide === index ? 'bg-accent w-8' : 'bg-white/30 hover:bg-white/50'
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
@@ -106,8 +106,8 @@ const Hero = () => {
 
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-0 right-0 bg-turquoise opacity-10 w-96 h-96 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 left-0 bg-purple-600 opacity-10 w-96 h-96 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+        <div className="absolute top-0 right-0 bg-primary-light opacity-20 w-96 h-96 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 left-0 bg-accent opacity-10 w-96 h-96 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
       </div>
     </section>
   );
@@ -120,7 +120,7 @@ const FeaturesSection = () => {
       title: "Hızlı İşlem",
       description: "Saniyeler içinde ödeme alın, kuyrukları azaltın",
       icon: (
-        <svg className="w-12 h-12 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
       )
@@ -129,8 +129,9 @@ const FeaturesSection = () => {
       title: "Kolay Kullanım",
       description: "Sezgisel arayüz ile karmaşık işlemleri basitleştirin",
       icon: (
-        <svg className="w-12 h-12 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
       )
     },
@@ -138,8 +139,8 @@ const FeaturesSection = () => {
       title: "Güvenli Ödeme",
       description: "En son güvenlik protokolleri ile korunan işlemler",
       icon: (
-        <svg className="w-12 h-12 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
         </svg>
       )
     },
@@ -147,8 +148,8 @@ const FeaturesSection = () => {
       title: "Çoklu Ödeme",
       description: "Tüm ödeme yöntemlerini tek cihazda toplayın",
       icon: (
-        <svg className="w-12 h-12 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
         </svg>
       )
     },
@@ -156,7 +157,7 @@ const FeaturesSection = () => {
       title: "Anlık Raporlar",
       description: "İşletmenizin performansını gerçek zamanlı takip edin",
       icon: (
-        <svg className="w-12 h-12 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
       )
@@ -165,7 +166,7 @@ const FeaturesSection = () => {
       title: "7/24 Destek",
       description: "Teknik ekibimiz her zaman yanınızda",
       icon: (
-        <svg className="w-12 h-12 text-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
         </svg>
       )
@@ -173,11 +174,11 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="max-w-screen-xl mx-auto px-4">
+    <section className="py-20 bg-bg-light">
+      <div className="max-w-screen-xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-navy mb-4">PayEra Avantajları</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold text-text-heading mb-6">PayEra Avantajları</h2>
+          <p className="text-lg text-text-body max-w-2xl mx-auto">
             Modern yazarkasa POS sistemleri ile işletmenize değer katacak çözümler sunuyoruz.
           </p>
         </div>
@@ -186,13 +187,13 @@ const FeaturesSection = () => {
           {features.map((feature, index) => (
             <div 
               key={index} 
-              className="bg-white py-6 px-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+              className="hover-card group"
             >
-              <div className="mb-4 bg-light-gray inline-block p-3 rounded-lg">
-                <div className="text-3xl">{feature.icon}</div>
+              <div className="mb-6 bg-primary/5 inline-block p-4 rounded-full">
+                <div className="text-3xl text-primary group-hover:text-primary-dark transition-colors">{feature.icon}</div>
               </div>
-              <h3 className="text-xl font-bold text-navy mb-2">{feature.title}</h3>
-              <p className="text-gray-600">{feature.description}</p>
+              <h3 className="text-xl font-bold text-text-heading mb-3">{feature.title}</h3>
+              <p className="text-text-body">{feature.description}</p>
             </div>
           ))}
         </div>
@@ -229,10 +230,10 @@ const ProductsSection = () => {
 
   return (
     <section className="py-20 bg-white">
-      <div className="max-w-screen-xl mx-auto px-4">
+      <div className="max-w-screen-xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-navy mb-4">Ürün Ailemiz</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold text-text-heading mb-6">Ürün Ailemiz</h2>
+          <p className="text-lg text-text-body max-w-2xl mx-auto">
             Her ihtiyaca uygun yazarkasa POS çözümlerimizle tanışın.
           </p>
         </div>
@@ -241,13 +242,13 @@ const ProductsSection = () => {
           {products.map((product, index) => (
             <div 
               key={index} 
-              className="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col"
+              className="hover-card group overflow-hidden flex flex-col"
             >
-              <div className="h-48 bg-navy flex items-center justify-center p-4">
+              <div className="h-48 bg-primary flex items-center justify-center p-4 rounded-t-lg -mx-6 -mt-6 mb-6">
                 <img 
                   src={product.image}
                   alt={product.name}
-                  className="max-h-full object-contain"
+                  className="max-h-full max-w-[260px] object-contain transform group-hover:scale-105 transition-transform duration-300"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.onerror = null;
@@ -255,20 +256,22 @@ const ProductsSection = () => {
                   }}
                 />
               </div>
-              <div className="p-6 flex-grow">
-                <h3 className="text-lg font-semibold text-navy mb-2">{product.name}</h3>
-                <p className="text-gray-600 mb-4">{product.description}</p>
+              <div className="flex-grow">
+                <h3 className="text-xl font-bold text-text-heading mb-3">{product.name}</h3>
+                <p className="text-text-body mb-4">{product.description}</p>
                 <ul className="space-y-2 mb-6">
                   {product.features.map((feature, i) => (
-                    <li key={i} className="flex items-start text-gray-700">
-                      <span className="text-turquoise mr-2 text-lg">✓</span>
+                    <li key={i} className="flex items-start text-text-body">
+                      <svg className="w-5 h-5 mr-2 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
                       <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="px-6 pb-6 mt-auto">
-                <Link to={`/urunler/${product.name.toLowerCase().replace(/\s+/g, '-')}`} className="block w-full bg-turquoise hover:bg-opacity-80 text-white text-center font-bold py-2 px-4 rounded-lg transition duration-300">
+              <div className="mt-auto">
+                <Link to={`/urunler/${product.name.toLowerCase().replace(/\s+/g, '-')}`} className="btn btn-primary block text-center">
                   Detaylı Bilgi
                 </Link>
               </div>
@@ -277,9 +280,9 @@ const ProductsSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Link to="/urunler" className="inline-flex items-center text-turquoise hover:text-opacity-80 font-semibold transition duration-300">
+          <Link to="/urunler" className="inline-flex items-center text-primary hover:text-primary-dark font-semibold transition duration-300 group">
             Tüm Ürünlerimizi Görüntüleyin
-            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </Link>
@@ -292,59 +295,59 @@ const ProductsSection = () => {
 // Why Choose Us Section
 const WhyChooseUsSection = () => {
   return (
-    <section className="py-20 bg-navy text-white relative overflow-hidden">
+    <section className="py-24 bg-primary text-white relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute top-0 right-0 bg-turquoise opacity-10 w-96 h-96 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute bottom-0 left-0 bg-purple-600 opacity-10 w-96 h-96 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+      <div className="absolute top-0 right-0 bg-primary-light opacity-20 w-96 h-96 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute bottom-0 left-0 bg-accent opacity-10 w-96 h-96 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
       
       <div className="max-w-screen-xl mx-auto px-6 md:px-8 relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between">
-          <div className="md:w-1/2 mb-10 md:mb-0">
-            <h2 className="text-3xl font-bold mb-6">Neden PayEra?</h2>
-            <p className="text-lg text-gray-300 mb-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+          <div className="md:w-1/2">
+            <h2 className="text-3xl font-bold mb-8">Neden PayEra?</h2>
+            <p className="text-lg text-white/90 mb-10 leading-relaxed">
               PayEra, yalnızca bir yazarkasa POS sistemi değil, işletmeniz için 
               tam kapsamlı bir iş çözümü sunuyor. Müşteri memnuniyetini artırırken, 
               operasyonel verimlilik sağlıyor.
             </p>
             
-            <div className="space-y-6 px-2">
-              <div className="flex items-start">
-                <div className="mr-4 mt-1 bg-turquoise bg-opacity-20 p-2 rounded-full">
-                  <svg className="w-6 h-6 text-turquoise" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            <div className="space-y-8 px-2">
+              <div className="flex items-start group">
+                <div className="mr-5 mt-1 bg-white/10 p-3 rounded-full transition-all duration-300 group-hover:bg-white/20">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Yerli Üretim</h3>
-                  <p className="text-gray-300">
+                  <h3 className="text-xl font-semibold mb-3">Yerli Üretim</h3>
+                  <p className="text-white/80 leading-relaxed">
                     Türkiye'de tasarlanan ve üretilen çözümlerle yerel ihtiyaçlara tam uyum sağlıyoruz.
                   </p>
                 </div>
               </div>
               
-              <div className="flex items-start">
-                <div className="mr-4 mt-1 bg-turquoise bg-opacity-20 p-2 rounded-full">
-                  <svg className="w-6 h-6 text-turquoise" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              <div className="flex items-start group">
+                <div className="mr-5 mt-1 bg-white/10 p-3 rounded-full transition-all duration-300 group-hover:bg-white/20">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Entegre Çözümler</h3>
-                  <p className="text-gray-300">
+                  <h3 className="text-xl font-semibold mb-3">Entegre Çözümler</h3>
+                  <p className="text-white/80 leading-relaxed">
                     Stok yönetimi, müşteri ilişkileri ve muhasebe sistemleriyle tam entegrasyon sağlıyoruz.
                   </p>
                 </div>
               </div>
               
-              <div className="flex items-start">
-                <div className="mr-4 mt-1 bg-turquoise bg-opacity-20 p-2 rounded-full">
-                  <svg className="w-6 h-6 text-turquoise" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              <div className="flex items-start group">
+                <div className="mr-5 mt-1 bg-white/10 p-3 rounded-full transition-all duration-300 group-hover:bg-white/20">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Sürekli Güncelleme</h3>
-                  <p className="text-gray-300">
+                  <h3 className="text-xl font-semibold mb-3">Sürekli Güncelleme</h3>
+                  <p className="text-white/80 leading-relaxed">
                     Düzenli yazılım güncellemeleri ve teknik destekle değişen ihtiyaçlara uyum sağlıyoruz.
                   </p>
                 </div>
@@ -354,11 +357,11 @@ const WhyChooseUsSection = () => {
           
           <div className="md:w-5/12">
             <div className="relative">
-              <div className="bg-white bg-opacity-10 p-1 rounded-lg">
+              <div className="bg-white/10 p-2 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-500">
                 <img 
                   src="/images/payera-business-solution.png" 
                   alt="PayEra İş Çözümleri" 
-                  className="rounded-lg"
+                  className="rounded-lg w-full max-w-[320px] mx-auto md:max-w-full"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.onerror = null;
@@ -368,8 +371,8 @@ const WhyChooseUsSection = () => {
               </div>
               
               {/* Decorative elements */}
-              <div className="absolute -top-4 -left-4 w-24 h-24 bg-turquoise bg-opacity-20 rounded-full"></div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 border-4 border-turquoise border-opacity-30 rounded-lg"></div>
+              <div className="absolute -top-6 -left-6 w-28 h-28 bg-accent bg-opacity-20 rounded-full"></div>
+              <div className="absolute -bottom-8 -right-8 w-36 h-36 border-4 border-white/20 rounded-xl"></div>
             </div>
           </div>
         </div>
@@ -388,12 +391,12 @@ const StatisticsSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-turquoise text-white">
-      <div className="max-w-screen-xl mx-auto px-4">
+    <section className="py-16 bg-primary text-white">
+      <div className="max-w-screen-xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {stats.map((stat, index) => (
-            <div key={index} className="p-6">
-              <div className="text-4xl md:text-5xl font-bold mb-2">{stat.value}</div>
+            <div key={index} className="p-6 hover:scale-105 transition-transform duration-300">
+              <div className="text-4xl md:text-5xl font-bold mb-3">{stat.value}</div>
               <div className="text-lg opacity-80">{stat.label}</div>
             </div>
           ))}
@@ -456,11 +459,11 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="max-w-screen-xl mx-auto px-4">
+    <section className="py-24 bg-bg-light">
+      <div className="max-w-screen-xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-navy mb-4">Müşterilerimiz Ne Diyor?</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold text-text-heading mb-6">Müşterilerimiz Ne Diyor?</h2>
+          <p className="text-lg text-text-body max-w-2xl mx-auto">
             İşletmelerin PayEra deneyimlerini keşfedin.
           </p>
         </div>
@@ -470,21 +473,21 @@ const TestimonialsSection = () => {
             {testimonials.map((testimonial, index) => (
               <div 
                 key={index} 
-                className={`bg-white p-8 rounded-lg shadow-md transition-opacity duration-500 ${
+                className={`hover-card transition-opacity duration-500 ${
                   currentTestimonial === index ? 'block opacity-100' : 'hidden opacity-0'
                 }`}
               >
                 <div className="mb-6">
-                  <svg className="w-10 h-10 text-turquoise opacity-20" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-10 h-10 text-primary opacity-20" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                   </svg>
                 </div>
-                <p className="text-gray-700 mb-6 italic text-lg">"{testimonial.quote}"</p>
+                <p className="text-text-body mb-8 italic text-lg leading-relaxed">"{testimonial.quote}"</p>
                 <div className="flex items-center">
                   <img 
                     src={testimonial.image} 
                     alt={testimonial.name}
-                    className="w-12 h-12 rounded-full mr-4 object-cover"
+                    className="w-14 h-14 rounded-full mr-4 object-cover shadow-md"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.onerror = null;
@@ -492,8 +495,8 @@ const TestimonialsSection = () => {
                     }}
                   />
                   <div>
-                    <div className="font-bold text-navy">{testimonial.name}</div>
-                    <div className="text-gray-600 text-sm">{testimonial.position}</div>
+                    <div className="font-bold text-text-heading">{testimonial.name}</div>
+                    <div className="text-text-body text-sm">{testimonial.position}</div>
                   </div>
                 </div>
               </div>
@@ -502,32 +505,32 @@ const TestimonialsSection = () => {
             {/* Navigation Arrows */}
             <button 
               onClick={() => goToTestimonial(currentTestimonial === 0 ? testimonials.length - 1 : currentTestimonial - 1)} 
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 bg-white rounded-full p-3 shadow-lg hover:bg-primary hover:text-white focus:outline-none transition-all duration-300"
               aria-label="Previous testimonial"
             >
-              <svg className="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
             <button 
               onClick={() => goToTestimonial(currentTestimonial === testimonials.length - 1 ? 0 : currentTestimonial + 1)} 
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 focus:outline-none"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 bg-white rounded-full p-3 shadow-lg hover:bg-primary hover:text-white focus:outline-none transition-all duration-300"
               aria-label="Next testimonial"
             >
-              <svg className="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
           </div>
           
           {/* Slide Indicators */}
-          <div className="flex justify-center space-x-3 mt-6">
+          <div className="flex justify-center space-x-3 mt-8">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToTestimonial(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  currentTestimonial === index ? 'bg-turquoise w-6' : 'bg-gray-300'
+                  currentTestimonial === index ? 'bg-primary w-8' : 'bg-gray-300 hover:bg-primary/50'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
@@ -542,24 +545,24 @@ const TestimonialsSection = () => {
 // Dealership CTA Section
 const DealershipCTA = () => {
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-screen-xl mx-auto px-4">
-        <div className="bg-navy rounded-2xl overflow-hidden shadow-xl">
+    <section className="py-24 bg-white">
+      <div className="max-w-screen-xl mx-auto px-6">
+        <div className="bg-primary rounded-xl overflow-hidden shadow-xl">
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/2 p-10 md:p-16 flex flex-col justify-center text-white">
-              <h2 className="text-3xl font-bold mb-6">PayEra Bayisi Olun</h2>
-              <p className="text-gray-300 text-lg mb-8">
+              <h2 className="text-3xl font-bold mb-8">PayEra Bayisi Olun</h2>
+              <p className="text-white/90 text-lg mb-10 leading-relaxed">
                 Türkiye'nin hızla büyüyen yazarkasa POS markasının bayilik ailesine katılın. 
                 Rekabetçi komisyon oranları, kapsamlı eğitim ve sürekli destek ile 
                 kazançlı bir iş fırsatı sizleri bekliyor.
               </p>
               <div>
-                <Link to="/bayilik" className="bg-turquoise hover:bg-turquoise-dark text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-block transform hover:scale-105">
+                <Link to="/bayilik" className="btn btn-accent inline-block shadow-lg hover:scale-105">
                   Bayilik Koşulları
                 </Link>
               </div>
             </div>
-            <div className="md:w-1/2 bg-gray-100">
+            <div className="md:w-1/2 bg-bg-light">
               <img 
                 src="/images/dealership.jpg" 
                 alt="PayEra Bayilik" 

@@ -78,12 +78,12 @@ const PayEraA90 = () => {
             <div className="md:w-1/2">
               <div className="bg-white rounded-lg shadow-xl p-4">
                 <img 
-                  src="/src/assets/images/payera-a90.jpg" 
+                  src="images/payera-a90.jpg" 
                   alt="PayEra A90 Yazarkasa POS" 
                   className="w-full h-auto object-contain rounded-md shadow-sm"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = "https://placehold.co/600x400/001F3F/FFFFFF?text=PayEra+A90";
+                    target.src = "images/product-features.jpg";
                   }}
                 />
               </div>

@@ -78,7 +78,7 @@ const PayEra507 = () => {
             <div className="md:w-1/2">
               <div className="bg-white rounded-lg shadow-xl p-4">
                 <img 
-                  src="/images/products/payera-507.png" 
+                  src="images/products/payera-507.png" 
                   alt="PayEra 507" 
                   className="w-full h-auto object-contain"
                   onError={(e) => {

@@ -3,11 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://sadettintas.github.io/PayEra",
+  "homepage": "https://sadettintas.github.io/PayEraNew",
   "scripts": {
     "dev": "vite",
     "dev:2000": "vite --port 2000",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && ./post-build-images.sh",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",

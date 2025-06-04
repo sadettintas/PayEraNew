@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>PayEra - Yönlendirme</title>
+  <script type="text/javascript">
+    // Single Page Apps for GitHub Pages
+    // MIT License
+    // https://github.com/rafgraph/spa-github-pages
+    // This script takes the current URL and converts the path and query
+    // string into a redirect URL that includes a redirect parameter with
+    // the original URL path and query string
+
+    // Redirect to the app's entry point while preserving the URL
+    var segmentCount = 1;
+    var l = window.location;
+    var repo = "/PayEraNew"; // Repo name for redirecting
+    
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + repo + '/?p=/' +
+      l.pathname.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +
+      (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+      l.hash
+    );
+  </script>
+</head>
+<body>
+  <h1>Yönlendiriliyor...</h1>
+  <p>Ana sayfaya yönlendiriliyorsunuz. Otomatik yönlendirme çalışmıyorsa lütfen <a href="/PayEraNew/">bu bağlantıya tıklayın</a>.</p>
+</body>
+</html>

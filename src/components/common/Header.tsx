@@ -1,12 +1,25 @@
 import { Link, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
+  // Scroll olayını dinleyerek navbar'ı değiştirme
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const isActive = (path: string) => {
-    return location.pathname === path ? 'text-turquoise' : 'text-white hover:text-turquoise';
+    return location.pathname === path 
+      ? 'nav-link active' 
+      : 'nav-link';
   };
 
   const toggleMenu = () => {
@@ -14,13 +27,13 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-navy py-3 fixed w-full top-0 z-50">
-      <div className="max-w-screen-xl mx-auto px-4">
+    <header className={`bg-primary-dark sticky w-full top-0 z-50 transition-all duration-300 ${isScrolled ? 'shadow-lg' : ''}`}>
+      <div className="max-w-screen-xl mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
               <img 
-                src="/images/payera-logo.png" 
+                src="/images/logo.svg" 
                 alt="PayEra" 
                 className="h-8"
                 onError={(e) => {
@@ -55,7 +68,7 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <nav className="md:hidden mt-4 bg-navy text-white flex flex-col space-y-4 p-4 border-t border-gray-700">
+          <nav className="md:hidden mt-4 bg-primary-dark text-white flex flex-col space-y-4 p-6 border-t border-white/20 rounded-b-xl shadow-lg">
             <Link onClick={toggleMenu} to="/" className={`font-medium ${isActive('/')}`}>Ana Sayfa</Link>
             <Link onClick={toggleMenu} to="/hakkimizda" className={`font-medium ${isActive('/hakkimizda')}`}>Hakkımızda</Link>
             <Link onClick={toggleMenu} to="/urunler" className={`font-medium ${isActive('/urunler')}`}>Ürünler</Link>

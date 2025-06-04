@@ -1,0 +1,103 @@
+/* Additional contrast improvements for better readability */
+
+/* Ensure all buttons have proper contrast */
+.btn {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.btn-primary {
+  color: white !important;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+}
+
+.btn-accent {
+  color: #263238 !important; /* Dark text on accent color for better readability */
+  font-weight: 700;
+}
+
+/* Improve readability of cards on colored backgrounds */
+.bg-primary .card,
+.bg-primary-dark .card,
+.bg-primary-light .card {
+  color: white;
+}
+
+/* Improve contrast for section headings */
+.section-heading {
+  color: #263238;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.bg-primary .section-heading,
+.bg-primary-dark .section-heading,
+.bg-primary-light .section-heading {
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Navigation menu specific improvements */
+.nav-link {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Active and hover states for nav items */
+.nav-link.active {
+  color: white;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.nav-link:hover:not(.active) {
+  color: white;
+  background-color: rgba(255,255,255,0.15);
+  border-radius: 4px;
+}
+
+/* Feature sections text contrast */
+.feature-title {
+  font-weight: 700;
+  color: #263238;
+}
+
+.feature-description {
+  color: #546E7A;
+  line-height: 1.6;
+}
+
+.bg-primary .feature-title,
+.bg-primary-dark .feature-title,
+.bg-primary-light .feature-title {
+  color: white;
+}
+
+.bg-primary .feature-description,
+.bg-primary-dark .feature-description,
+.bg-primary-light .feature-description {
+  color: rgba(255,255,255,0.9);
+}
+
+/* Testimonial section */
+.testimonial-text {
+  font-style: italic;
+  line-height: 1.8;
+}
+
+.testimonial-author {
+  font-weight: 700;
+}
+
+/* Contact form labels */
+.form-label {
+  color: #263238;
+  font-weight: 600;
+}
+
+.bg-primary .form-label,
+.bg-primary-dark .form-label,
+.bg-primary-light .form-label {
+  color: white;
+}
