@@ -4,9 +4,22 @@
 
 // GitHub Pages için temel URL yolunu belirleme fonksiyonu
 
+
+// Dinamik base path belirleyici: hem local, hem prod, hem farklı alt dizinler için uyumlu
 export const getBaseUrl = () => {
-  // Her zaman /PayEraNew base path kullan (hem prod hem dev için)
-  return '/PayEraNew';
+  if (typeof window !== 'undefined') {
+    // Vite'ın base path'ini otomatik algıla
+    const { pathname } = window.location;
+    // Örn: /PayEraNew/ veya /PayEra/ gibi bir alt dizin varsa onu al
+    const match = pathname.match(/^\/(\w+)\//);
+    if (match) {
+      return `/${match[1]}`;
+    }
+    // Kökteyse veya localdeyse boş string döndür
+    return '';
+  }
+  // SSR veya window yoksa fallback
+  return '';
 };
 
 /**
@@ -18,8 +31,12 @@ export const getBaseUrl = () => {
 export const getImageUrl = (url: string) => {
   if (!url) return '';
   if (url.startsWith('http://') || url.startsWith('https://')) return url;
-  if (url.startsWith('/')) return `${getBaseUrl()}${url}`;
-  return `${getBaseUrl()}/${url}`;
+  const base = getBaseUrl();
+  // Eğer zaten base path ile başlıyorsa tekrar ekleme
+  if (url.startsWith(base + '/images/')) return url;
+  if (url.startsWith('/images/')) return `${base}${url}`;
+  // Eğer başında / yoksa otomatik ekle
+  return `${base}/images/${url.replace(/^\/+/, '')}`;
 };
 
 /**

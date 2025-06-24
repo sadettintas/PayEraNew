@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Image from '../components/common/Image';
 
 const Home = () => {
   return (
@@ -113,15 +114,11 @@ const Home = () => {
             {/* Product 1 */}
             <div className="card-hover group overflow-hidden rounded-lg shadow-md">
               <div className="h-48 bg-primary-light flex items-center justify-center p-4 rounded-t-lg">
-                <img 
+                <Image 
                   src="/images/product-x10.png" 
                   alt="PayEra X10" 
                   className="max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.onerror = null;
-                    target.src = "https://via.placeholder.com/300x300/FFFFFF/0088A9?text=PayEra+X10";
-                  }}
+                  fallback="/images/product-x10.png"
                 />
               </div>
               <div className="p-6">
@@ -156,15 +153,11 @@ const Home = () => {
             {/* Product 2 */}
             <div className="card-hover group overflow-hidden rounded-lg shadow-md">
               <div className="h-48 bg-primary-light flex items-center justify-center p-4 rounded-t-lg">
-                <img 
+                <Image 
                   src="/images/product-s20.png" 
                   alt="PayEra S20" 
                   className="max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.onerror = null;
-                    target.src = "https://via.placeholder.com/300x300/FFFFFF/0088A9?text=PayEra+S20";
-                  }}
+                  fallback="/images/product-s20.png"
                 />
               </div>
               <div className="p-6">
@@ -199,15 +192,11 @@ const Home = () => {
             {/* Product 3 */}
             <div className="card-hover group overflow-hidden rounded-lg shadow-md">
               <div className="h-48 bg-primary-light flex items-center justify-center p-4 rounded-t-lg">
-                <img 
+                <Image 
                   src="/images/product-pro30.png" 
                   alt="PayEra Pro 30" 
                   className="max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.onerror = null;
-                    target.src = "https://via.placeholder.com/300x300/FFFFFF/0088A9?text=PayEra+Pro30";
-                  }}
+                  fallback="/images/product-pro30.png"
                 />
               </div>
               <div className="p-6">
@@ -353,15 +342,11 @@ const Home = () => {
               </div>
               <p className="text-text-body mb-8 italic text-lg leading-relaxed">"PayEra ödeme sistemini kullanmaya başladıktan sonra kasiyerlerimizin işlem hızı %40 arttı. Müşterilerimiz artık kasada daha az bekliyor ve memnuniyet oranımız yükseldi."</p>
               <div className="flex items-center">
-                <img 
+                <Image 
                   src="/images/testimonial-default.jpg" 
                   alt="Ahmet Yılmaz"
                   className="w-14 h-14 rounded-full mr-4 object-cover shadow-md"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.onerror = null;
-                    target.src = "https://via.placeholder.com/56x56/0088A9/FFFFFF?text=AY";
-                  }}
+                  fallback="/images/testimonial-default.jpg"
                 />
                 <div>
                   <div className="font-bold text-text-heading">Ahmet Yılmaz</div>

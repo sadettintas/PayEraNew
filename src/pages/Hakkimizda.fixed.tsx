@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import Image from '../components/common/Image';
 
 const Hakkimizda = () => {
   useEffect(() => {
@@ -58,7 +59,7 @@ const Hakkimizda = () => {
       position: "CEO",
       bio: "Fintech sektöründe 20 yılı aşkın deneyimiyle PayEra'yı Türkiye'nin lider ödeme sistemleri sağlayıcısı konumuna getirdi.",
       image: "/images/chairman.jpg", // Path düzeltildi
-      fallbackImage: "https://via.placeholder.com/200x200/0088A9/FFFFFF?text=AY",
+      fallbackImage: "/images/chairman.jpg",
       icon: "🚀"
     },
     {
@@ -66,7 +67,7 @@ const Hakkimizda = () => {
       position: "CTO",
       bio: "Yazılım mühendisliği alanında uzman olan Zeynep, PayEra'nın teknolojik altyapısının arkasındaki isim.",
       image: "/images/vice-chairman.jpg", // Path düzeltildi
-      fallbackImage: "https://via.placeholder.com/200x200/0088A9/FFFFFF?text=ZK",
+      fallbackImage: "/images/vice-chairman.jpg",
       icon: "💻"
     },
     {
@@ -74,7 +75,7 @@ const Hakkimizda = () => {
       position: "Satış Direktörü",
       bio: "Satış ve pazarlama stratejileri konusunda uzman olan Mehmet, PayEra'nın büyüme stratejilerini yönetiyor.",
       image: "/images/team.jpg", // Path düzeltildi
-      fallbackImage: "https://via.placeholder.com/200x200/0088A9/FFFFFF?text=MD",
+      fallbackImage: "/images/team.jpg",
       icon: "📈"
     },
     {
@@ -82,7 +83,7 @@ const Hakkimizda = () => {
       position: "Müşteri İlişkileri Direktörü",
       bio: "Müşteri deneyimi konusunda uzman olan Ayşe, PayEra'nın müşteri memnuniyetini en üst seviyede tutmak için çalışıyor.",
       image: "/images/about-us.jpg", // Path düzeltildi
-      fallbackImage: "https://via.placeholder.com/200x200/0088A9/FFFFFF?text=AÇ",
+      fallbackImage: "/images/about-us.jpg",
       icon: "👥"
     }
   ];
@@ -113,15 +114,11 @@ const Hakkimizda = () => {
             <div className="md:w-1/2">
               <div className="relative">
                 <div className="bg-gray-100 p-1 rounded-lg hover:shadow-2xl transition-all duration-300">
-                  <img 
+                  <Image 
                     src="/images/company-image.jpg" 
                     alt="PayEra Genel Merkez Ofisi ve Çalışanlar" 
                     className="rounded-lg w-full h-auto shadow-md"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/600x400/0088A9/FFFFFF?text=PayEra+Ofisi";
-                    }}
+                    fallback="/images/company-image.jpg"
                   />
                 </div>
                 
@@ -186,15 +183,11 @@ const Hakkimizda = () => {
             <div className="flex flex-col md:flex-row">
               {/* Left Column - Image */}
               <div className="md:w-1/3 relative">
-                <img 
+                <Image 
                   src="/images/chairman.jpg" 
                   alt="Ahmet Yılmaz - Yönetim Kurulu Başkanı" 
                   className="w-full h-full object-cover md:min-h-[500px]"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.onerror = null;
-                    target.src = "https://via.placeholder.com/400x600/0088A9/FFFFFF?text=Nurullah+Türk";
-                  }}
+                  fallback="/images/chairman.jpg"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
@@ -253,15 +246,11 @@ const Hakkimizda = () => {
               >
                 {/* Image with overlay effect */}
                 <div className="relative overflow-hidden">
-                  <img
+                  <Image
                     src={member.image}
                     alt={`${member.name} - ${member.position} Fotoğrafı`}
                     className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = member.fallbackImage;
-                    }}
+                    fallback={member.fallbackImage}
                   />
                   <div className="absolute inset-0 bg-primary-dark opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                   

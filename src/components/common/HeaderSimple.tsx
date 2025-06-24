@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { getImageUrl } from '../../utils/imageLoader';
+import Image from './Image';
 
 const HeaderSimple = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,15 +28,12 @@ const HeaderSimple = () => {
       <div className="max-w-screen-xl mx-auto px-6 flex justify-between items-center">
         <div>
           <Link to="/" className="flex items-center space-x-2">
-            <img 
-              src={getImageUrl('/images/logo.svg')}
+            <Image 
+              src='/images/logo.svg'
               alt="PayEra" 
               className="h-8"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.onerror = null;
-                target.src = 'data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2248%22%20height%3D%2248%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%3E%3Crect%20height%3D%2248%22%20width%3D%2248%22%20fill%3D%22%2300B4D8%22%2F%3E%3Ctext%20x%3D%2224%22%20y%3D%2230%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%3EP%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fsvg%3E';
-              }}
+              fallback='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2248%22%20height%3D%2248%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%3E%3Crect%20height%3D%2248%22%20width%3D%2248%22%20fill%3D%22%2300B4D8%22%2F%3E%3Ctext%20x%3D%2224%22%20y%3D%2230%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%20fill%3D%22white%22%3EP%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fsvg%3E'
+              loadingClassName=""
             />
             <span className="text-white font-bold text-xl">PayEra</span>
           </Link>

@@ -6,8 +6,8 @@ import LoadingOverlay from './components/common/LoadingOverlay';
 import ErrorBoundary from './components/common/ErrorBoundary';
 
 // Lazy loaded components for better performance
-const Home = lazy(() => import('./pages/Home.fixed'));
-const Hakkimizda = lazy(() => import('./pages/Hakkimizda.fixed'));
+const Home = lazy(() => import('./pages/Home'));
+const Hakkimizda = lazy(() => import('./pages/Hakkimizda'));
 const Products = lazy(() => import('./pages/Products'));
 const PayEraA90 = lazy(() => import('./pages/PayEraA90'));
 const PayEra507 = lazy(() => import('./pages/PayEra507'));

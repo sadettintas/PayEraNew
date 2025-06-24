@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
+import Image from '../components/common/Image';
+import { getImageUrl } from '../utils/imageLoader';
 
 // Hero Section with Animated Carousel
 const Hero = () => {
@@ -77,15 +79,11 @@ const Hero = () => {
         {/* Hero Image */}
         <div className="md:w-1/2 z-10">
           <div className="opacity-0 animate-fade-in-up animation-delay-400">
-            <img 
-              src={slides[currentSlide].image} 
+            <Image 
+              src={getImageUrl(slides[currentSlide].image)} 
               alt={slides[currentSlide].title} 
               className="mx-auto max-w-[320px] w-80 object-contain rounded-xl shadow-xl border border-white/10"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.onerror = null;
-                target.src = slides[currentSlide].fallbackImage;
-              }}
+              fallback={getImageUrl(slides[currentSlide].fallbackImage)}
             />
           </div>
         </div>
@@ -211,21 +209,21 @@ const ProductsSection = () => {
       description: "Küçük işletmeler için kompakt ve ekonomik çözüm",
       features: ["Android İşletim Sistemi", "Dokunmatik Ekran", "Termal Yazıcı", "EFT-POS Entegrasyonu"],
       image: "/images/product-x10.png",
-      fallbackImage: "https://via.placeholder.com/300x300/FFFFFF/0088A9?text=PayEra+X10"
+      fallbackImage: "/images/product-x10.png"
     },
     {
       name: "PayEra S20",
       description: "Orta ölçekli işletmeler için tam donanımlı model",
       features: ["Geniş Dokunmatik Ekran", "Hızlı İşlemci", "Gelişmiş Bağlantı Seçenekleri", "Stok Takip Modülü"],
       image: "/images/product-s20.png",
-      fallbackImage: "https://via.placeholder.com/300x300/FFFFFF/0088A9?text=PayEra+S20"
+      fallbackImage: "/images/product-s20.png"
     },
     {
       name: "PayEra Pro 30",
       description: "Yoğun kullanım için profesyonel çözüm",
       features: ["Çift Ekran Desteği", "Yüksek Performans", "Gelişmiş Raporlama", "Tam ERP Entegrasyonu"],
       image: "/images/product-pro30.png",
-      fallbackImage: "https://via.placeholder.com/300x300/FFFFFF/0088A9?text=PayEra+Pro30"
+      fallbackImage: "/images/product-pro30.png"
     }
   ];
 
@@ -246,15 +244,11 @@ const ProductsSection = () => {
               className="hover-card group overflow-hidden flex flex-col"
             >
               <div className="h-48 bg-primary flex items-center justify-center p-4 rounded-t-lg -mx-6 -mt-6 mb-6">
-                <img 
+                <Image 
                   src={product.image}
                   alt={product.name}
                   className="max-h-full max-w-[260px] object-contain transform group-hover:scale-105 transition-transform duration-300"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.onerror = null;
-                    target.src = product.fallbackImage;
-                  }}
+                  fallback={product.fallbackImage}
                 />
               </div>
               <div className="flex-grow">
@@ -359,15 +353,11 @@ const WhyChooseUsSection = () => {
           <div className="md:w-5/12">
             <div className="relative">
               <div className="bg-white/10 p-2 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-500">
-                <img 
+                <Image 
                   src="/images/payera-business-solution.png" 
                   alt="PayEra İş Çözümleri" 
                   className="rounded-lg w-full max-w-[320px] mx-auto md:max-w-full"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.onerror = null;
-                    target.src = "https://via.placeholder.com/600x400/0088A9/FFFFFF?text=PayEra+İş+Çözümleri";
-                  }}
+                  fallback="/images/payera-business-solution.png"
                 />
               </div>
               
@@ -485,15 +475,11 @@ const TestimonialsSection = () => {
                 </div>
                 <p className="text-text-body mb-8 italic text-lg leading-relaxed">"{testimonial.quote}"</p>
                 <div className="flex items-center">
-                  <img 
+                  <Image 
                     src={testimonial.image} 
                     alt={testimonial.name}
                     className="w-14 h-14 rounded-full mr-4 object-cover shadow-md"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = testimonial.fallbackImage;
-                    }}
+                    fallback={testimonial.fallbackImage}
                   />
                   <div>
                     <div className="font-bold text-text-heading">{testimonial.name}</div>
@@ -564,15 +550,11 @@ const DealershipCTA = () => {
               </div>
             </div>
             <div className="md:w-1/2 bg-bg-light">
-              <img 
+              <Image 
                 src="/images/dealership.jpg" 
                 alt="PayEra Bayilik" 
                 className="h-full w-full object-cover"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.onerror = null;
-                  target.src = "/images/dealership-default.jpg";
-                }}
+                fallback="/images/dealership-default.jpg"
               />
             </div>
           </div>

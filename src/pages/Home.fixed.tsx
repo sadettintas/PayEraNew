@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState, useRef, Suspense, lazy } from 'react';
-import { preloadAllSiteImages, getImageWithCacheBusting } from '../utils/imageLoader';
+import { preloadAllSiteImages, getImageWithCacheBusting, getImageUrl } from '../utils/imageLoader';
+import Image from '../components/common/Image';
 
 // Yükleme göstergesi bileşeni
 const LoadingIndicator = () => (
@@ -50,11 +51,11 @@ const Hero = () => {
     // Resimleri önceden yükle
     const preloadImages = () => {
       slides.forEach(slide => {
-        const img = new Image();
+        const img = new window.Image();
         img.src = slide.image;
         img.onerror = () => {
           console.log(`Failed to load: ${slide.image}, using fallback`);
-          const fallback = new Image();
+          const fallback = new window.Image();
           fallback.src = slide.fallbackImage;
         };
       });
@@ -227,21 +228,21 @@ const Products = () => {
       name: "PayEra X10",
       description: "Küçük işletmeler için ekonomik ve güçlü çözüm",
       image: "/images/product-x10.png",
-      fallbackImage: "https://via.placeholder.com/400x560/0097A7/FFFFFF?text=PayEra+X10",
+      fallbackImage: "/images/product-x10.png",
       features: ["Android İşletim Sistemi", "Dokunmatik Ekran", "3G/4G & WiFi", "57 mm Termal Yazıcı"]
     },
     {
       name: "PayEra S20",
       description: "Orta ölçekli işletmeler için ideal çözüm",
       image: "/images/product-s20.png",
-      fallbackImage: "https://via.placeholder.com/400x560/0097A7/FFFFFF?text=PayEra+S20",
+      fallbackImage: "/images/product-s20.png",
       features: ["5 inç Dokunmatik Ekran", "Hızlı Snapdragon İşlemci", "NFC Desteği", "Gelişmiş Bağlantı Seçenekleri", "Uzun Pil Ömrü"]
     },
     {
       name: "PayEra Pro 30",
       description: "Profesyonel işletmeler için tam donanımlı çözüm",
       image: "/images/product-pro30.png",
-      fallbackImage: "https://via.placeholder.com/400x560/0097A7/FFFFFF?text=PayEra+Pro+30",
+      fallbackImage: "/images/product-pro30.png",
       features: ["7 inç HD Ekran", "Çift Kamera", "Parmak İzi Okuyucu", "QR Tarayıcı", "USB Type-C", "NFC & MSR Entegrasyonu"]
     }
   ];
@@ -351,15 +352,11 @@ const BusinessSolutions = () => {
           </div>
           
           <div>
-            <img 
+            <Image 
               src="/images/payera-business-solution.png" 
               alt="PayEra İş Çözümleri" 
               className="rounded-lg shadow-xl border border-white/10"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.onerror = null;
-                target.src = "https://via.placeholder.com/600x400/0088A9/FFFFFF?text=Business+Solutions";
-              }}
+              fallback="/images/business-support.jpg"
             />
           </div>
         </div>
@@ -805,15 +802,11 @@ const WhyChooseUs = () => {
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Left Side Image */}
           <div className="md:w-1/2">
-            <img 
+            <Image 
               src="/images/about-us.jpg" 
               alt="PayEra Ekibi" 
               className="rounded-lg shadow-xl"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.onerror = null;
-                target.src = "https://via.placeholder.com/600x400/0088A9/FFFFFF?text=Neden+PayEra";
-              }}
+              fallback="/images/company-image.jpg"
             />
           </div>
           

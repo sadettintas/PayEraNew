@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import Image from '../components/common/Image';
 
 const PayEraPro30 = () => {
   useEffect(() => {
@@ -99,15 +100,11 @@ const PayEraPro30 = () => {
             </div>
             <div className="md:w-1/2 flex justify-center">
               <div className="bg-white p-6 rounded-xl shadow-lg">
-                <img 
+                <Image 
                   src="/images/product-pro30.png" 
                   alt="PayEra Pro 30" 
                   className="max-w-full h-auto max-h-80 object-contain"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.onerror = null;
-                    target.src = "https://via.placeholder.com/400x560/0097A7/FFFFFF?text=PayEra+Pro+30";
-                  }}
+                  fallback="/images/product-pro30.png"
                 />
               </div>
             </div>
@@ -139,39 +136,27 @@ const PayEraPro30 = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-bg-light p-4 rounded-lg shadow-md">
-              <img 
+              <Image 
                 src="/images/product-pro30.png" 
                 alt="PayEra Pro 30 Ön Görünüm" 
                 className="w-full h-auto rounded"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.onerror = null;
-                  target.src = "https://via.placeholder.com/600x400/0097A7/FFFFFF?text=PayEra+Pro+30+Ön";
-                }}
+                fallback="/images/product-pro30.png"
               />
             </div>
             <div className="bg-bg-light p-4 rounded-lg shadow-md">
-              <img 
+              <Image 
                 src="/images/product-pro30.png" 
                 alt="PayEra Pro 30 Yan Görünüm" 
                 className="w-full h-auto rounded"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.onerror = null;
-                  target.src = "https://via.placeholder.com/600x400/0097A7/FFFFFF?text=PayEra+Pro+30+Yan";
-                }}
+                fallback="/images/product-pro30.png"
               />
             </div>
             <div className="bg-bg-light p-4 rounded-lg shadow-md">
-              <img 
+              <Image 
                 src="/images/product-pro30.png" 
                 alt="PayEra Pro 30 Müşteri Ekranı" 
                 className="w-full h-auto rounded"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.onerror = null;
-                  target.src = "https://via.placeholder.com/600x400/0097A7/FFFFFF?text=PayEra+Pro+30+Ekran";
-                }}
+                fallback="/images/product-pro30.png"
               />
             </div>
           </div>
@@ -242,15 +227,11 @@ const PayEraPro30 = () => {
               </ul>
             </div>
             <div className="md:w-1/2 md:pl-12">
-              <img 
-                src="/images/product-pro30.png" 
+              <Image 
+                src="/images/payera-business-solution.png" 
                 alt="PayEra Pro 30 İş Çözümleri" 
                 className="rounded-lg shadow-lg max-w-full h-auto"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.onerror = null;
-                  target.src = "https://via.placeholder.com/600x400/0097A7/FFFFFF?text=İş+Çözümleri";
-                }}
+                fallback="/images/payera-business-solution.png"
               />
             </div>
           </div>
@@ -344,15 +325,11 @@ const PayEraPro30 = () => {
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <div className="flex flex-col md:flex-row">
                 <div className="md:w-1/3 bg-bg-alt p-4 flex items-center justify-center">
-                  <img 
+                  <Image 
                     src="/images/product-x10.png" 
                     alt="PayEra X10" 
                     className="max-h-40 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/200x300/0097A7/FFFFFF?text=PayEra+X10";
-                    }}
+                    fallback="/images/product-x10.png"
                   />
                 </div>
                 <div className="md:w-2/3 p-6">
@@ -366,15 +343,11 @@ const PayEraPro30 = () => {
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <div className="flex flex-col md:flex-row">
                 <div className="md:w-1/3 bg-bg-alt p-4 flex items-center justify-center">
-                  <img 
+                  <Image 
                     src="/images/product-s20.png" 
                     alt="PayEra S20" 
                     className="max-h-40 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/200x300/0097A7/FFFFFF?text=PayEra+S20";
-                    }}
+                    fallback="/images/product-s20.png"
                   />
                 </div>
                 <div className="md:w-2/3 p-6">

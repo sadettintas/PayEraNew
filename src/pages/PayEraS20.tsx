@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
+import Image from '../components/common/Image';
 
 const PayEraS20 = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -184,15 +185,11 @@ const PayEraS20 = () => {
             </div>
             <div className="md:w-1/2 flex justify-center">
               <div className="bg-white p-6 rounded-xl shadow-lg">
-                <img 
+                <Image 
                   src="/images/product-s20.png" 
                   alt="PayEra S20" 
                   className="max-w-full h-auto max-h-80 object-contain"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.onerror = null;
-                    target.src = "https://via.placeholder.com/400x560/0097A7/FFFFFF?text=PayEra+S20";
-                  }}
+                  fallback="/images/product-s20.png"
                 />
               </div>
             </div>
@@ -224,39 +221,27 @@ const PayEraS20 = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-bg-light p-4 rounded-lg shadow-md">
-              <img 
+              <Image 
                 src="/images/product-s20.png" 
                 alt="PayEra S20 Ön Görünüm" 
                 className="w-full h-auto rounded"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.onerror = null;
-                  target.src = "https://via.placeholder.com/600x400/0097A7/FFFFFF?text=PayEra+S20+Ön";
-                }}
+                fallback="/images/product-s20.png"
               />
             </div>
             <div className="bg-bg-light p-4 rounded-lg shadow-md">
-              <img 
+              <Image 
                 src="/images/product-s20.png" 
                 alt="PayEra S20 Yan Görünüm" 
                 className="w-full h-auto rounded"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.onerror = null;
-                  target.src = "https://via.placeholder.com/600x400/0097A7/FFFFFF?text=PayEra+S20+Yan";
-                }}
+                fallback="/images/product-s20.png"
               />
             </div>
             <div className="bg-bg-light p-4 rounded-lg shadow-md">
-              <img 
+              <Image 
                 src="/images/product-s20.png" 
                 alt="PayEra S20 Yazıcı Detayı" 
                 className="w-full h-auto rounded"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.onerror = null;
-                  target.src = "https://via.placeholder.com/600x400/0097A7/FFFFFF?text=PayEra+S20+Detay";
-                }}
+                fallback="/images/product-s20.png"
               />
             </div>
           </div>
@@ -340,15 +325,11 @@ const PayEraS20 = () => {
               </ul>
             </div>
             <div className="md:w-1/2 md:pl-12">
-              <img 
+              <Image 
                 src="/images/product-s20.png" 
                 alt="PayEra S20 Yazılım Entegrasyonu" 
                 className="rounded-lg shadow-lg max-w-full h-auto"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.onerror = null;
-                  target.src = "https://via.placeholder.com/600x400/0097A7/FFFFFF?text=Yazılım+Entegrasyonu";
-                }}
+                fallback="/images/product-s20.png"
               />
             </div>
           </div>
@@ -378,15 +359,11 @@ const PayEraS20 = () => {
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <div className="flex flex-col md:flex-row">
                 <div className="md:w-1/3 bg-bg-alt p-4 flex items-center justify-center">
-                  <img 
+                  <Image 
                     src="/images/product-x10.png" 
                     alt="PayEra X10" 
                     className="max-h-40 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/200x300/0097A7/FFFFFF?text=PayEra+X10";
-                    }}
+                    fallback="/images/product-x10.png"
                   />
                 </div>
                 <div className="md:w-2/3 p-6">
@@ -400,15 +377,11 @@ const PayEraS20 = () => {
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <div className="flex flex-col md:flex-row">
                 <div className="md:w-1/3 bg-bg-alt p-4 flex items-center justify-center">
-                  <img 
+                  <Image 
                     src="/images/product-pro30.png" 
                     alt="PayEra Pro 30" 
                     className="max-h-40 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/200x300/0097A7/FFFFFF?text=PayEra+Pro+30";
-                    }}
+                    fallback="/images/product-pro30.png"
                   />
                 </div>
                 <div className="md:w-2/3 p-6">
@@ -456,10 +429,11 @@ const PayEraS20 = () => {
                 {/* Profile image */}
                 <div className="mr-4 relative">
                   <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/30">
-                    <img 
+                    <Image 
                       src="/images/testimonial-default.jpg" 
                       alt="Canan Yılmaz"
                       className="w-full h-full object-cover"
+                      fallback="/images/testimonial-default.jpg"
                     />
                   </div>
                   {/* Accent circle decoration */}
@@ -524,15 +498,11 @@ const PayEraS20 = () => {
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <div className="flex flex-col md:flex-row">
                 <div className="md:w-1/3 bg-bg-alt p-4 flex items-center justify-center">
-                  <img 
+                  <Image 
                     src="/images/product-x10.png" 
                     alt="PayEra X10" 
                     className="max-h-40 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/200x300/0097A7/FFFFFF?text=PayEra+X10";
-                    }}
+                    fallback="/images/product-x10.png"
                   />
                 </div>
                 <div className="md:w-2/3 p-6">
@@ -546,15 +516,11 @@ const PayEraS20 = () => {
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <div className="flex flex-col md:flex-row">
                 <div className="md:w-1/3 bg-bg-alt p-4 flex items-center justify-center">
-                  <img 
+                  <Image 
                     src="/images/product-pro30.png" 
                     alt="PayEra Pro 30" 
                     className="max-h-40 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/200x300/0097A7/FFFFFF?text=PayEra+Pro+30";
-                    }}
+                    fallback="/images/product-pro30.png"
                   />
                 </div>
                 <div className="md:w-2/3 p-6">
@@ -602,10 +568,11 @@ const PayEraS20 = () => {
                 {/* Profile image */}
                 <div className="mr-4 relative">
                   <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/30">
-                    <img 
+                    <Image 
                       src="/images/testimonial-default.jpg" 
                       alt="Canan Yılmaz"
                       className="w-full h-full object-cover"
+                      fallback="/images/testimonial-default.jpg"
                     />
                   </div>
                   {/* Accent circle decoration */}
@@ -670,15 +637,11 @@ const PayEraS20 = () => {
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <div className="flex flex-col md:flex-row">
                 <div className="md:w-1/3 bg-bg-alt p-4 flex items-center justify-center">
-                  <img 
+                  <Image 
                     src="/images/product-x10.png" 
                     alt="PayEra X10" 
                     className="max-h-40 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/200x300/0097A7/FFFFFF?text=PayEra+X10";
-                    }}
+                    fallback="/images/product-x10.png"
                   />
                 </div>
                 <div className="md:w-2/3 p-6">
@@ -692,15 +655,11 @@ const PayEraS20 = () => {
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <div className="flex flex-col md:flex-row">
                 <div className="md:w-1/3 bg-bg-alt p-4 flex items-center justify-center">
-                  <img 
+                  <Image 
                     src="/images/product-pro30.png" 
                     alt="PayEra Pro 30" 
                     className="max-h-40 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/200x300/0097A7/FFFFFF?text=PayEra+Pro+30";
-                    }}
+                    fallback="/images/product-pro30.png"
                   />
                 </div>
                 <div className="md:w-2/3 p-6">
@@ -748,887 +707,11 @@ const PayEraS20 = () => {
                 {/* Profile image */}
                 <div className="mr-4 relative">
                   <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/30">
-                    <img 
+                    <Image 
                       src="/images/testimonial-default.jpg" 
                       alt="Canan Yılmaz"
                       className="w-full h-full object-cover"
-                    />
-                  </div>
-                  {/* Accent circle decoration */}
-                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-accent rounded-full border-2 border-white"></div>
-                </div>
-                
-                {/* Author info */}
-                <div>
-                  <h4 className="font-bold text-text-heading text-lg">Canan Yılmaz</h4>
-                  <p className="text-text-body text-sm">Operasyon Direktörü</p>
-                  <p className="text-primary-dark font-medium text-sm">MarketPlus</p>
-                  <div className="mt-1">
-                    <div className="flex space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <svg 
-                          key={i} 
-                          className="w-5 h-5 text-accent" 
-                          fill="currentColor" 
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z" />
-                        </svg>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Company logo SVG */}
-              <div className="h-10 opacity-80">
-                <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="120" height="40" rx="4" fill="#FF5722"/>
-                  <path d="M20.32 29l-3.14-4.64L15.16 29h-3.34l4.8-7.08-4.58-6.52h3.34l2.92 4.2l2.02-4.2h3.34l-4.58 6.52 4.8 7.08H20.32z" fill="white"/>
-                  <path d="M33.5519 29.24c-1.29 0-2.44-0.24-3.45-0.71c-1.01-0.47-1.8-1.13-2.37-1.97c-0.57-0.84-0.86-1.82-0.86-2.92c0-1.1 0.29-2.08 0.86-2.92c0.57-0.84 1.36-1.5 2.37-1.97c1.01-0.47 2.16-0.71 3.45-0.71c1.29 0 2.44 0.24 3.45 0.71c1.01 0.47 1.8 1.13 2.37 1.97c0.57 0.84 0.86 1.82 0.86 2.92c0 1.1-0.29 2.08-0.86 2.92c-0.57 0.84-1.36 1.5-2.37 1.97c-1.01 0.47-2.16 0.71-3.45 0.71z" fill="white"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-primary text-white">
-        <div className="max-w-screen-xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-6">PayEra S20 ile İşletmenizi Modernleştirin</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Orta ölçekli işletmeniz için geliştirilen PayEra S20 ile satışlarınızı artırın, müşteri memnuniyetini yükseltin.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/iletisim" className="btn btn-accent">Fiyat Teklifi Alın</Link>
-            <Link to="/bayilik" className="btn btn-outline-light">Bayilik Fırsatları</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Related Products */}
-      <section className="py-16 bg-bg-light">
-        <div className="max-w-screen-xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12 text-text-heading">Diğer Ürünlerimiz</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/3 bg-bg-alt p-4 flex items-center justify-center">
-                  <img 
-                    src="/images/product-x10.png" 
-                    alt="PayEra X10" 
-                    className="max-h-40 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/200x300/0097A7/FFFFFF?text=PayEra+X10";
-                    }}
-                  />
-                </div>
-                <div className="md:w-2/3 p-6">
-                  <h3 className="text-xl font-bold mb-2 text-text-heading">PayEra X10</h3>
-                  <p className="text-text-body mb-4">Küçük işletmeler için kompakt ve ekonomik çözüm</p>
-                  <Link to="/urunler/payera-x10" className="btn btn-primary">İncele</Link>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/3 bg-bg-alt p-4 flex items-center justify-center">
-                  <img 
-                    src="/images/product-pro30.png" 
-                    alt="PayEra Pro 30" 
-                    className="max-h-40 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/200x300/0097A7/FFFFFF?text=PayEra+Pro+30";
-                    }}
-                  />
-                </div>
-                <div className="md:w-2/3 p-6">
-                  <h3 className="text-xl font-bold mb-2 text-text-heading">PayEra Pro 30</h3>
-                  <p className="text-text-body mb-4">Profesyonel işletmeler için tam donanımlı çözüm</p>
-                  <Link to="/urunler/payera-pro-30" className="btn btn-primary">İncele</Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-16 bg-gradient-to-b from-white to-bg-light overflow-hidden relative">
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-primary opacity-5 rounded-full blur-xl"></div>
-          <div className="absolute bottom-10 right-10 w-80 h-80 bg-accent opacity-5 rounded-full blur-3xl"></div>
-          <div className="absolute top-20 left-20 text-9xl text-primary/5 font-serif">❝</div>
-          <div className="absolute bottom-20 right-20 text-9xl text-primary/5 font-serif rotate-180">❝</div>
-        </div>
-
-        <div className="max-w-screen-xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-sm font-semibold text-primary mb-3">
-              Müşteri Deneyimleri
-            </span>
-            <h2 className="text-3xl font-bold text-center mb-4 text-text-heading">PayEra S20 Kullanan İşletmeler</h2>
-            <p className="text-text-body max-w-2xl mx-auto">
-              PayEra S20 ile işletmelerinde verimlilik ve müşteri memnuniyetini artıran işletmeler deneyimlerini paylaşıyor.
-            </p>
-          </div>
-          
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10 hover:shadow-2xl transition-all duration-300 border border-gray-100">
-            <div className="text-primary/10 text-7xl font-serif leading-none mb-4">❝</div>
-            
-            {/* Testimonial content */}
-            <p className="text-xl md:text-2xl text-text-body leading-relaxed mb-8">
-              "PayEra S20 ile tüm market zincirimizde stok takibi ve satış yönetimi çok daha kolay hale geldi. Geniş ekranı ve kullanıcı dostu arayüzü sayesinde personelimizin eğitim süreci kısaldı, operasyonel verimlilik %30 arttı."
-            </p>
-            
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <div className="flex items-center">
-                {/* Profile image */}
-                <div className="mr-4 relative">
-                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/30">
-                    <img 
-                      src="/images/testimonial-default.jpg" 
-                      alt="Canan Yılmaz"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  {/* Accent circle decoration */}
-                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-accent rounded-full border-2 border-white"></div>
-                </div>
-                
-                {/* Author info */}
-                <div>
-                  <h4 className="font-bold text-text-heading text-lg">Canan Yılmaz</h4>
-                  <p className="text-text-body text-sm">Operasyon Direktörü</p>
-                  <p className="text-primary-dark font-medium text-sm">MarketPlus</p>
-                  <div className="mt-1">
-                    <div className="flex space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <svg 
-                          key={i} 
-                          className="w-5 h-5 text-accent" 
-                          fill="currentColor" 
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z" />
-                        </svg>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Company logo SVG */}
-              <div className="h-10 opacity-80">
-                <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="120" height="40" rx="4" fill="#FF5722"/>
-                  <path d="M20.32 29l-3.14-4.64L15.16 29h-3.34l4.8-7.08-4.58-6.52h3.34l2.92 4.2l2.02-4.2h3.34l-4.58 6.52 4.8 7.08H20.32z" fill="white"/>
-                  <path d="M33.5519 29.24c-1.29 0-2.44-0.24-3.45-0.71c-1.01-0.47-1.8-1.13-2.37-1.97c-0.57-0.84-0.86-1.82-0.86-2.92c0-1.1 0.29-2.08 0.86-2.92c0.57-0.84 1.36-1.5 2.37-1.97c1.01-0.47 2.16-0.71 3.45-0.71c1.29 0 2.44 0.24 3.45 0.71c1.01 0.47 1.8 1.13 2.37 1.97c0.57 0.84 0.86 1.82 0.86 2.92c0 1.1-0.29 2.08-0.86 2.92c-0.57 0.84-1.36 1.5-2.37 1.97c-1.01 0.47-2.16 0.71-3.45 0.71z" fill="white"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-primary text-white">
-        <div className="max-w-screen-xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-6">PayEra S20 ile İşletmenizi Modernleştirin</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Orta ölçekli işletmeniz için geliştirilen PayEra S20 ile satışlarınızı artırın, müşteri memnuniyetini yükseltin.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/iletisim" className="btn btn-accent">Fiyat Teklifi Alın</Link>
-            <Link to="/bayilik" className="btn btn-outline-light">Bayilik Fırsatları</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Related Products */}
-      <section className="py-16 bg-bg-light">
-        <div className="max-w-screen-xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12 text-text-heading">Diğer Ürünlerimiz</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/3 bg-bg-alt p-4 flex items-center justify-center">
-                  <img 
-                    src="/images/product-x10.png" 
-                    alt="PayEra X10" 
-                    className="max-h-40 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/200x300/0097A7/FFFFFF?text=PayEra+X10";
-                    }}
-                  />
-                </div>
-                <div className="md:w-2/3 p-6">
-                  <h3 className="text-xl font-bold mb-2 text-text-heading">PayEra X10</h3>
-                  <p className="text-text-body mb-4">Küçük işletmeler için kompakt ve ekonomik çözüm</p>
-                  <Link to="/urunler/payera-x10" className="btn btn-primary">İncele</Link>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/3 bg-bg-alt p-4 flex items-center justify-center">
-                  <img 
-                    src="/images/product-pro30.png" 
-                    alt="PayEra Pro 30" 
-                    className="max-h-40 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/200x300/0097A7/FFFFFF?text=PayEra+Pro+30";
-                    }}
-                  />
-                </div>
-                <div className="md:w-2/3 p-6">
-                  <h3 className="text-xl font-bold mb-2 text-text-heading">PayEra Pro 30</h3>
-                  <p className="text-text-body mb-4">Profesyonel işletmeler için tam donanımlı çözüm</p>
-                  <Link to="/urunler/payera-pro-30" className="btn btn-primary">İncele</Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-16 bg-gradient-to-b from-white to-bg-light overflow-hidden relative">
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-primary opacity-5 rounded-full blur-xl"></div>
-          <div className="absolute bottom-10 right-10 w-80 h-80 bg-accent opacity-5 rounded-full blur-3xl"></div>
-          <div className="absolute top-20 left-20 text-9xl text-primary/5 font-serif">❝</div>
-          <div className="absolute bottom-20 right-20 text-9xl text-primary/5 font-serif rotate-180">❝</div>
-        </div>
-
-        <div className="max-w-screen-xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-sm font-semibold text-primary mb-3">
-             
-              Müşteri Deneyimleri
-            </span>
-            <h2 className="text-3xl font-bold text-center mb-4 text-text-heading">PayEra S20 Kullanan İşletmeler</h2>
-            <p className="text-text-body max-w-2xl mx-auto">
-              PayEra S20 ile işletmelerinde verimlilik ve müşteri memnuniyetini artıran işletmeler deneyimlerini paylaşıyor.
-            </p>
-          </div>
-          
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10 hover:shadow-2xl transition-all duration-300 border border-gray-100">
-            <div className="text-primary/10 text-7xl font-serif leading-none mb-4">❝</div>
-            
-            {/* Testimonial content */}
-            <p className="text-xl md:text-2xl text-text-body leading-relaxed mb-8">
-              "PayEra S20 ile tüm market zincirimizde stok takibi ve satış yönetimi çok daha kolay hale geldi. Geniş ekranı ve kullanıcı dostu arayüzü sayesinde personelimizin eğitim süreci kısaldı, operasyonel verimlilik %30 arttı."
-            </p>
-            
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <div className="flex items-center">
-                {/* Profile image */}
-                <div className="mr-4 relative">
-                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/30">
-                    <img 
-                      src="/images/testimonial-default.jpg" 
-                      alt="Canan Yılmaz"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  {/* Accent circle decoration */}
-                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-accent rounded-full border-2 border-white"></div>
-                </div>
-                
-                {/* Author info */}
-                <div>
-                  <h4 className="font-bold text-text-heading text-lg">Canan Yılmaz</h4>
-                  <p className="text-text-body text-sm">Operasyon Direktörü</p>
-                  <p className="text-primary-dark font-medium text-sm">MarketPlus</p>
-                  <div className="mt-1">
-                    <div className="flex space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <svg 
-                          key={i} 
-                          className="w-5 h-5 text-accent" 
-                          fill="currentColor" 
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z" />
-                        </svg>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Company logo SVG */}
-              <div className="h-10 opacity-80">
-                <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="120" height="40" rx="4" fill="#FF5722"/>
-                  <path d="M20.32 29l-3.14-4.64L15.16 29h-3.34l4.8-7.08-4.58-6.52h3.34l2.92 4.2l2.02-4.2h3.34l-4.58 6.52 4.8 7.08H20.32z" fill="white"/>
-                  <path d="M33.5519 29.24c-1.29 0-2.44-0.24-3.45-0.71c-1.01-0.47-1.8-1.13-2.37-1.97c-0.57-0.84-0.86-1.82-0.86-2.92c0-1.1 0.29-2.08 0.86-2.92c0.57-0.84 1.36-1.5 2.37-1.97c1.01-0.47 2.16-0.71 3.45-0.71c1.29 0 2.44 0.24 3.45 0.71c1.01 0.47 1.8 1.13 2.37 1.97c0.57 0.84 0.86 1.82 0.86 2.92c0 1.1-0.29 2.08-0.86 2.92c-0.57 0.84-1.36 1.5-2.37 1.97c-1.01 0.47-2.16 0.71-3.45 0.71z" fill="white"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-primary text-white">
-        <div className="max-w-screen-xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-6">PayEra S20 ile İşletmenizi Modernleştirin</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Orta ölçekli işletmeniz için geliştirilen PayEra S20 ile satışlarınızı artırın, müşteri memnuniyetini yükseltin.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/iletisim" className="btn btn-accent">Fiyat Teklifi Alın</Link>
-            <Link to="/bayilik" className="btn btn-outline-light">Bayilik Fırsatları</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Related Products */}
-      <section className="py-16 bg-bg-light">
-        <div className="max-w-screen-xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12 text-text-heading">Diğer Ürünlerimiz</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/3 bg-bg-alt p-4 flex items-center justify-center">
-                  <img 
-                    src="/images/product-x10.png" 
-                    alt="PayEra X10" 
-                    className="max-h-40 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/200x300/0097A7/FFFFFF?text=PayEra+X10";
-                    }}
-                  />
-                </div>
-                <div className="md:w-2/3 p-6">
-                  <h3 className="text-xl font-bold mb-2 text-text-heading">PayEra X10</h3>
-                  <p className="text-text-body mb-4">Küçük işletmeler için kompakt ve ekonomik çözüm</p>
-                  <Link to="/urunler/payera-x10" className="btn btn-primary">İncele</Link>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/3 bg-bg-alt p-4 flex items-center justify-center">
-                  <img 
-                    src="/images/product-pro30.png" 
-                    alt="PayEra Pro 30" 
-                    className="max-h-40 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/200x300/0097A7/FFFFFF?text=PayEra+Pro+30";
-                    }}
-                  />
-                </div>
-                <div className="md:w-2/3 p-6">
-                  <h3 className="text-xl font-bold mb-2 text-text-heading">PayEra Pro 30</h3>
-                  <p className="text-text-body mb-4">Profesyonel işletmeler için tam donanımlı çözüm</p>
-                  <Link to="/urunler/payera-pro-30" className="btn btn-primary">İncele</Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-16 bg-gradient-to-b from-white to-bg-light overflow-hidden relative">
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-primary opacity-5 rounded-full blur-xl"></div>
-          <div className="absolute bottom-10 right-10 w-80 h-80 bg-accent opacity-5 rounded-full blur-3xl"></div>
-          <div className="absolute top-20 left-20 text-9xl text-primary/5 font-serif">❝</div>
-          <div className="absolute bottom-20 right-20 text-9xl text-primary/5 font-serif rotate-180">❝</div>
-        </div>
-
-        <div className="max-w-screen-xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-sm font-semibold text-primary mb-3">
-              Müşteri Deneyimleri
-            </span>
-            <h2 className="text-3xl font-bold text-center mb-4 text-text-heading">PayEra S20 Kullanan İşletmeler</h2>
-            <p className="text-text-body max-w-2xl mx-auto">
-              PayEra S20 ile işletmelerinde verimlilik ve müşteri memnuniyetini artıran işletmeler deneyimlerini paylaşıyor.
-            </p>
-          </div>
-          
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10 hover:shadow-2xl transition-all duration-300 border border-gray-100">
-            <div className="text-primary/10 text-7xl font-serif leading-none mb-4">❝</div>
-            
-            {/* Testimonial content */}
-            <p className="text-xl md:text-2xl text-text-body leading-relaxed mb-8">
-              "PayEra S20 ile tüm market zincirimizde stok takibi ve satış yönetimi çok daha kolay hale geldi. Geniş ekranı ve kullanıcı dostu arayüzü sayesinde personelimizin eğitim süreci kısaldı, operasyonel verimlilik %30 arttı."
-            </p>
-            
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <div className="flex items-center">
-                {/* Profile image */}
-                <div className="mr-4 relative">
-                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/30">
-                    <img 
-                      src="/images/testimonial-default.jpg" 
-                      alt="Canan Yılmaz"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  {/* Accent circle decoration */}
-                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-accent rounded-full border-2 border-white"></div>
-                </div>
-                
-                {/* Author info */}
-                <div>
-                  <h4 className="font-bold text-text-heading text-lg">Canan Yılmaz</h4>
-                  <p className="text-text-body text-sm">Operasyon Direktörü</p>
-                  <p className="text-primary-dark font-medium text-sm">MarketPlus</p>
-                  <div className="mt-1">
-                    <div className="flex space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <svg 
-                          key={i} 
-                          className="w-5 h-5 text-accent" 
-                          fill="currentColor" 
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z" />
-                        </svg>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Company logo SVG */}
-              <div className="h-10 opacity-80">
-                <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="120" height="40" rx="4" fill="#FF5722"/>
-                  <path d="M20.32 29l-3.14-4.64L15.16 29h-3.34l4.8-7.08-4.58-6.52h3.34l2.92 4.2l2.02-4.2h3.34l-4.58 6.52 4.8 7.08H20.32z" fill="white"/>
-                  <path d="M33.5519 29.24c-1.29 0-2.44-0.24-3.45-0.71c-1.01-0.47-1.8-1.13-2.37-1.97c-0.57-0.84-0.86-1.82-0.86-2.92c0-1.1 0.29-2.08 0.86-2.92c0.57-0.84 1.36-1.5 2.37-1.97c1.01-0.47 2.16-0.71 3.45-0.71c1.29 0 2.44 0.24 3.45 0.71c1.01 0.47 1.8 1.13 2.37 1.97c0.57 0.84 0.86 1.82 0.86 2.92c0 1.1-0.29 2.08-0.86 2.92c-0.57 0.84-1.36 1.5-2.37 1.97c-1.01 0.47-2.16 0.71-3.45 0.71z" fill="white"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-primary text-white">
-        <div className="max-w-screen-xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-6">PayEra S20 ile İşletmenizi Modernleştirin</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Orta ölçekli işletmeniz için geliştirilen PayEra S20 ile satışlarınızı artırın, müşteri memnuniyetini yükseltin.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/iletisim" className="btn btn-accent">Fiyat Teklifi Alın</Link>
-            <Link to="/bayilik" className="btn btn-outline-light">Bayilik Fırsatları</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Related Products */}
-      <section className="py-16 bg-bg-light">
-        <div className="max-w-screen-xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12 text-text-heading">Diğer Ürünlerimiz</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/3 bg-bg-alt p-4 flex items-center justify-center">
-                  <img 
-                    src="/images/product-x10.png" 
-                    alt="PayEra X10" 
-                    className="max-h-40 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/200x300/0097A7/FFFFFF?text=PayEra+X10";
-                    }}
-                  />
-                </div>
-                <div className="md:w-2/3 p-6">
-                  <h3 className="text-xl font-bold mb-2 text-text-heading">PayEra X10</h3>
-                  <p className="text-text-body mb-4">Küçük işletmeler için kompakt ve ekonomik çözüm</p>
-                  <Link to="/urunler/payera-x10" className="btn btn-primary">İncele</Link>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/3 bg-bg-alt p-4 flex items-center justify-center">
-                  <img 
-                    src="/images/product-pro30.png" 
-                    alt="PayEra Pro 30" 
-                    className="max-h-40 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/200x300/0097A7/FFFFFF?text=PayEra+Pro+30";
-                    }}
-                  />
-                </div>
-                <div className="md:w-2/3 p-6">
-                  <h3 className="text-xl font-bold mb-2 text-text-heading">PayEra Pro 30</h3>
-                  <p className="text-text-body mb-4">Profesyonel işletmeler için tam donanımlı çözüm</p>
-                  <Link to="/urunler/payera-pro-30" className="btn btn-primary">İncele</Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-16 bg-gradient-to-b from-white to-bg-light overflow-hidden relative">
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-primary opacity-5 rounded-full blur-xl"></div>
-          <div className="absolute bottom-10 right-10 w-80 h-80 bg-accent opacity-5 rounded-full blur-3xl"></div>
-          <div className="absolute top-20 left-20 text-9xl text-primary/5 font-serif">❝</div>
-          <div className="absolute bottom-20 right-20 text-9xl text-primary/5 font-serif rotate-180">❝</div>
-        </div>
-
-        <div className="max-w-screen-xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-sm font-semibold text-primary mb-3">
-              Müşteri Deneyimleri
-            </span>
-            <h2 className="text-3xl font-bold text-center mb-4 text-text-heading">PayEra S20 Kullanan İşletmeler</h2>
-            <p className="text-text-body max-w-2xl mx-auto">
-              PayEra S20 ile işletmelerinde verimlilik ve müşteri memnuniyetini artıran işletmeler deneyimlerini paylaşıyor.
-            </p>
-          </div>
-          
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10 hover:shadow-2xl transition-all duration-300 border border-gray-100">
-            <div className="text-primary/10 text-7xl font-serif leading-none mb-4">❝</div>
-            
-            {/* Testimonial content */}
-            <p className="text-xl md:text-2xl text-text-body leading-relaxed mb-8">
-              "PayEra S20 ile tüm market zincirimizde stok takibi ve satış yönetimi çok daha kolay hale geldi. Geniş ekranı ve kullanıcı dostu arayüzü sayesinde personelimizin eğitim süreci kısaldı, operasyonel verimlilik %30 arttı."
-            </p>
-            
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <div className="flex items-center">
-                {/* Profile image */}
-                <div className="mr-4 relative">
-                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/30">
-                    <img 
-                      src="/images/testimonial-default.jpg" 
-                      alt="Canan Yılmaz"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  {/* Accent circle decoration */}
-                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-accent rounded-full border-2 border-white"></div>
-                </div>
-                
-                {/* Author info */}
-                <div>
-                  <h4 className="font-bold text-text-heading text-lg">Canan Yılmaz</h4>
-                  <p className="text-text-body text-sm">Operasyon Direktörü</p>
-                  <p className="text-primary-dark font-medium text-sm">MarketPlus</p>
-                  <div className="mt-1">
-                    <div className="flex space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <svg 
-                          key={i} 
-                          className="w-5 h-5 text-accent" 
-                          fill="currentColor" 
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z" />
-                        </svg>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Company logo SVG */}
-              <div className="h-10 opacity-80">
-                <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="120" height="40" rx="4" fill="#FF5722"/>
-                  <path d="M20.32 29l-3.14-4.64L15.16 29h-3.34l4.8-7.08-4.58-6.52h3.34l2.92 4.2l2.02-4.2h3.34l-4.58 6.52 4.8 7.08H20.32z" fill="white"/>
-                  <path d="M33.5519 29.24c-1.29 0-2.44-0.24-3.45-0.71c-1.01-0.47-1.8-1.13-2.37-1.97c-0.57-0.84-0.86-1.82-0.86-2.92c0-1.1 0.29-2.08 0.86-2.92c0.57-0.84 1.36-1.5 2.37-1.97c1.01-0.47 2.16-0.71 3.45-0.71c1.29 0 2.44 0.24 3.45 0.71c1.01 0.47 1.8 1.13 2.37 1.97c0.57 0.84 0.86 1.82 0.86 2.92c0 1.1-0.29 2.08-0.86 2.92c-0.57 0.84-1.36 1.5-2.37 1.97c-1.01 0.47-2.16 0.71-3.45 0.71z" fill="white"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-primary text-white">
-        <div className="max-w-screen-xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-6">PayEra S20 ile İşletmenizi Modernleştirin</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Orta ölçekli işletmeniz için geliştirilen PayEra S20 ile satışlarınızı artırın, müşteri memnuniyetini yükseltin.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/iletisim" className="btn btn-accent">Fiyat Teklifi Alın</Link>
-            <Link to="/bayilik" className="btn btn-outline-light">Bayilik Fırsatları</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Related Products */}
-      <section className="py-16 bg-bg-light">
-        <div className="max-w-screen-xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12 text-text-heading">Diğer Ürünlerimiz</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/3 bg-bg-alt p-4 flex items-center justify-center">
-                  <img 
-                    src="/images/product-x10.png" 
-                    alt="PayEra X10" 
-                    className="max-h-40 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/200x300/0097A7/FFFFFF?text=PayEra+X10";
-                    }}
-                  />
-                </div>
-                <div className="md:w-2/3 p-6">
-                  <h3 className="text-xl font-bold mb-2 text-text-heading">PayEra X10</h3>
-                  <p className="text-text-body mb-4">Küçük işletmeler için kompakt ve ekonomik çözüm</p>
-                  <Link to="/urunler/payera-x10" className="btn btn-primary">İncele</Link>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/3 bg-bg-alt p-4 flex items-center justify-center">
-                  <img 
-                    src="/images/product-pro30.png" 
-                    alt="PayEra Pro 30" 
-                    className="max-h-40 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/200x300/0097A7/FFFFFF?text=PayEra+Pro+30";
-                    }}
-                  />
-                </div>
-                <div className="md:w-2/3 p-6">
-                  <h3 className="text-xl font-bold mb-2 text-text-heading">PayEra Pro 30</h3>
-                  <p className="text-text-body mb-4">Profesyonel işletmeler için tam donanımlı çözüm</p>
-                  <Link to="/urunler/payera-pro-30" className="btn btn-primary">İncele</Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-16 bg-gradient-to-b from-white to-bg-light overflow-hidden relative">
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-primary opacity-5 rounded-full blur-xl"></div>
-          <div className="absolute bottom-10 right-10 w-80 h-80 bg-accent opacity-5 rounded-full blur-3xl"></div>
-          <div className="absolute top-20 left-20 text-9xl text-primary/5 font-serif">❝</div>
-          <div className="absolute bottom-20 right-20 text-9xl text-primary/5 font-serif rotate-180">❝</div>
-        </div>
-
-        <div className="max-w-screen-xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-sm font-semibold text-primary mb-3">
-              Müşteri Deneyimleri
-            </span>
-            <h2 className="text-3xl font-bold text-center mb-4 text-text-heading">PayEra S20 Kullanan İşletmeler</h2>
-            <p className="text-text-body max-w-2xl mx-auto">
-              PayEra S20 ile işletmelerinde verimlilik ve müşteri memnuniyetini artıran işletmeler deneyimlerini paylaşıyor.
-            </p>
-          </div>
-          
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10 hover:shadow-2xl transition-all duration-300 border border-gray-100">
-            <div className="text-primary/10 text-7xl font-serif leading-none mb-4">❝</div>
-            
-            {/* Testimonial content */}
-            <p className="text-xl md:text-2xl text-text-body leading-relaxed mb-8">
-              "PayEra S20 ile tüm market zincirimizde stok takibi ve satış yönetimi çok daha kolay hale geldi. Geniş ekranı ve kullanıcı dostu arayüzü sayesinde personelimizin eğitim süreci kısaldı, operasyonel verimlilik %30 arttı."
-            </p>
-            
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <div className="flex items-center">
-                {/* Profile image */}
-                <div className="mr-4 relative">
-                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/30">
-                    <img 
-                      src="/images/testimonial-default.jpg" 
-                      alt="Canan Yılmaz"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  {/* Accent circle decoration */}
-                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-accent rounded-full border-2 border-white"></div>
-                </div>
-                
-                {/* Author info */}
-                <div>
-                  <h4 className="font-bold text-text-heading text-lg">Canan Yılmaz</h4>
-                  <p className="text-text-body text-sm">Operasyon Direktörü</p>
-                  <p className="text-primary-dark font-medium text-sm">MarketPlus</p>
-                  <div className="mt-1">
-                    <div className="flex space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <svg 
-                          key={i} 
-                          className="w-5 h-5 text-accent" 
-                          fill="currentColor" 
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z" />
-                        </svg>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Company logo SVG */}
-              <div className="h-10 opacity-80">
-                <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="120" height="40" rx="4" fill="#FF5722"/>
-                  <path d="M20.32 29l-3.14-4.64L15.16 29h-3.34l4.8-7.08-4.58-6.52h3.34l2.92 4.2l2.02-4.2h3.34l-4.58 6.52 4.8 7.08H20.32z" fill="white"/>
-                  <path d="M33.5519 29.24c-1.29 0-2.44-0.24-3.45-0.71c-1.01-0.47-1.8-1.13-2.37-1.97c-0.57-0.84-0.86-1.82-0.86-2.92c0-1.1 0.29-2.08 0.86-2.92c0.57-0.84 1.36-1.5 2.37-1.97c1.01-0.47 2.16-0.71 3.45-0.71c1.29 0 2.44 0.24 3.45 0.71c1.01 0.47 1.8 1.13 2.37 1.97c0.57 0.84 0.86 1.82 0.86 2.92c0 1.1-0.29 2.08-0.86 2.92c-0.57 0.84-1.36 1.5-2.37 1.97c-1.01 0.47-2.16 0.71-3.45 0.71z" fill="white"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-primary text-white">
-        <div className="max-w-screen-xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-6">PayEra S20 ile İşletmenizi Modernleştirin</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Orta ölçekli işletmeniz için geliştirilen PayEra S20 ile satışlarınızı artırın, müşteri memnuniyetini yükseltin.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/iletisim" className="btn btn-accent">Fiyat Teklifi Alın</Link>
-            <Link to="/bayilik" className="btn btn-outline-light">Bayilik Fırsatları</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Related Products */}
-      <section className="py-16 bg-bg-light">
-        <div className="max-w-screen-xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12 text-text-heading">Diğer Ürünlerimiz</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/3 bg-bg-alt p-4 flex items-center justify-center">
-                  <img 
-                    src="/images/product-x10.png" 
-                    alt="PayEra X10" 
-                    className="max-h-40 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/200x300/0097A7/FFFFFF?text=PayEra+X10";
-                    }}
-                  />
-                </div>
-                <div className="md:w-2/3 p-6">
-                  <h3 className="text-xl font-bold mb-2 text-text-heading">PayEra X10</h3>
-                  <p className="text-text-body mb-4">Küçük işletmeler için kompakt ve ekonomik çözüm</p>
-                  <Link to="/urunler/payera-x10" className="btn btn-primary">İncele</Link>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/3 bg-bg-alt p-4 flex items-center justify-center">
-                  <img 
-                    src="/images/product-pro30.png" 
-                    alt="PayEra Pro 30" 
-                    className="max-h-40 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.onerror = null;
-                      target.src = "https://via.placeholder.com/200x300/0097A7/FFFFFF?text=PayEra+Pro+30";
-                    }}
-                  />
-                </div>
-                <div className="md:w-2/3 p-6">
-                  <h3 className="text-xl font-bold mb-2 text-text-heading">PayEra Pro 30</h3>
-                  <p className="text-text-body mb-4">Profesyonel işletmeler için tam donanımlı çözüm</p>
-                  <Link to="/urunler/payera-pro-30" className="btn btn-primary">İncele</Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-16 bg-gradient-to-b from-white to-bg-light overflow-hidden relative">
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-primary opacity-5 rounded-full blur-xl"></div>
-          <div className="absolute bottom-10 right-10 w-80 h-80 bg-accent opacity-5 rounded-full blur-3xl"></div>
-          <div className="absolute top-20 left-20 text-9xl text-primary/5 font-serif">❝</div>
-          <div className="absolute bottom-20 right-20 text-9xl text-primary/5 font-serif rotate-180">❝</div>
-        </div>
-
-        <div className="max-w-screen-xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-12">
-            <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-sm font-semibold text-primary mb-3">
-              Müşteri Deneyimleri
-            </span>
-            <h2 className="text-3xl font-bold text-center mb-4 text-text-heading">PayEra S20 Kullanan İşletmeler</h2>
-            <p className="text-text-body max-w-2xl mx-auto">
-              PayEra S20 ile işletmelerinde verimlilik ve müşteri memnuniyetini artıran işletmeler deneyimlerini paylaşıyor.
-            </p>
-          </div>
-          
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10 hover:shadow-2xl transition-all duration-300 border border-gray-100">
-            <div className="text-primary/10 text-7xl font-serif leading-none mb-4">❝</div>
-            
-            {/* Testimonial content */}
-            <p className="text-xl md:text-2xl text-text-body leading-relaxed mb-8">
-              "PayEra S20 ile tüm market zincirimizde stok takibi ve satış yönetimi çok daha kolay hale geldi. Geniş ekranı ve kullanıcı dostu arayüzü sayesinde personelimizin eğitim süreci kısaldı, operasyonel verimlilik %30 arttı."
-            </p>
-            
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <div className="flex items-center">
-                {/* Profile image */}
-                <div className="mr-4 relative">
-                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/30">
-                    <img 
-                      src="/images/testimonial-default.jpg" 
-                      alt="Canan Yılmaz"
-                      className="w-full h-full object-cover"
+                      fallback="/images/testimonial-default.jpg"
                     />
                   </div>
                   {/* Accent circle decoration */}

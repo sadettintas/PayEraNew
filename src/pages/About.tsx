@@ -1,3 +1,5 @@
+import Image from '../components/common/Image';
+
 const About = () => {
   const values = [
     {
@@ -100,13 +102,11 @@ const About = () => {
               </p>
             </div>
             <div className="md:w-1/2 flex justify-center">
-              <img 
-                src="images/team.png" 
+              <Image 
+                src="/images/team.jpg" 
                 alt="PayEra Ekibi" 
                 className="rounded-xl shadow-lg max-w-full hover:shadow-xl transition-all duration-300"
-                onError={(e) => {
-                  e.currentTarget.src = 'https://via.placeholder.com/500x400/FFFFFF/0088A9?text=PayEra+Ekibi';
-                }}
+                fallback="/images/team.jpg"
               />
             </div>
           </div>
@@ -215,13 +215,11 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {teamMembers.map((member, index) => (
               <div key={index} className="hover-card overflow-hidden group">
-                <img 
-                  src="images/team-member.png" 
+                <Image 
+                  src="/images/team.jpg" 
                   alt={member.name} 
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
-                  onError={(e) => {
-                    e.currentTarget.src = `https://via.placeholder.com/300x200/FFFFFF/001F3F?text=${encodeURIComponent(member.name)}`;
-                  }}
+                  fallback="/images/team.jpg"
                 />
                 <div className="p-4 text-center">
                   <h3 className="text-lg font-bold text-text-heading">{member.name}</h3>
